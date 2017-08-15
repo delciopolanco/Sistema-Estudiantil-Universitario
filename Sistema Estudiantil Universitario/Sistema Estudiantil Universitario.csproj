@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35CFC779-F012-4FC0-945F-17A4E27DF010}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Sistema_Estudiantil_Universitario</RootNamespace>
+    <AssemblyName>Sistema Estudiantil Universitario</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions, Version=5.0.1.20, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DataAnnotationsExtensions.5.0.1.20\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Datos\Docentes.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Metadata.cs" />
+    <Compile Include="Datos\Profesiones.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\UniDBEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniDBEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\UniDBEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\UniDBEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UniDBEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Usuarios.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\Validaciones.cs" />
+    <Compile Include="Enums\Errores.cs" />
+    <Compile Include="Enums\Estatus.cs" />
+    <Compile Include="Enums\MenuOpciones.cs" />
+    <Compile Include="frmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrincipal.Designer.cs">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\Constantes.cs" />
+    <Compile Include="Helpers\Correo.cs" />
+    <Compile Include="Helpers\Utilitario.cs" />
+    <Compile Include="Modales\frmCambioClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\frmCambioClave.Designer.cs">
+      <DependentUpon>frmCambioClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modales\frmOlvidoClave.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\frmOlvidoClave.Designer.cs">
+      <DependentUpon>frmOlvidoClave.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\ProfesionesModel.cs" />
+    <Compile Include="Datos\UsuariosModel.cs" />
+    <Compile Include="Modulos\frmAlumnos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmAlumnos.Designer.cs">
+      <DependentUpon>frmAlumnos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmAsignaturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmAsignaturas.Designer.cs">
+      <DependentUpon>frmAsignaturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmCreacionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmCreacionUsuario.Designer.cs">
+      <DependentUpon>frmCreacionUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmHorarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmHorarios.Designer.cs">
+      <DependentUpon>frmHorarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmMaestros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmMaestros.Designer.cs">
+      <DependentUpon>frmMaestros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmProfesion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmProfesion.Designer.cs">
+      <DependentUpon>frmProfesion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Modulos\frmSeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modulos\frmSeccion.Designer.cs">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmPrincipal.resx">
+      <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\frmCambioClave.resx">
+      <DependentUpon>frmCambioClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\frmOlvidoClave.resx">
+      <DependentUpon>frmOlvidoClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmAlumnos.resx">
+      <DependentUpon>frmAlumnos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmAsignaturas.resx">
+      <DependentUpon>frmAsignaturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmCreacionUsuario.resx">
+      <DependentUpon>frmCreacionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmHorarios.resx">
+      <DependentUpon>frmHorarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmMaestros.resx">
+      <DependentUpon>frmMaestros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmProfesion.resx">
+      <DependentUpon>frmProfesion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modulos\frmSeccion.resx">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Datos\UniDBEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>UniDBEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Datos\UniDBEntityModel.edmx.diagram">
+      <DependentUpon>UniDBEntityModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Distributor-report-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Groups-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions-list-add-user-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Datos\UniBD.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Datos\UniBD_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>UniBD.mdf</DependentUpon>
+    </Content>
+    <Content Include="Datos\UniDBEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UniDBEntityModel.edmx</DependentUpon>
+      <LastGenOutput>UniDBEntityModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Datos\UniDBEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>UniDBEntityModel.edmx</DependentUpon>
+      <LastGenOutput>UniDBEntityModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\valido.ico" />
+    <None Include="Resources\error.ico" />
+    <None Include="Resources\ok.ico" />
+    <None Include="Resources\Actions-user-group-new-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
