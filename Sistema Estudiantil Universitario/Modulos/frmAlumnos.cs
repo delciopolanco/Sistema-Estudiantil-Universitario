@@ -36,7 +36,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void frmAlumnos_Load(object sender, EventArgs e)
         {
-
+            txtMatricula.Text = String.Format("{0:yy-}", DateTime.Now);
         }
     }
 }

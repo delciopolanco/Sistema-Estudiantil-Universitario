@@ -68,7 +68,7 @@ namespace Sistema_Estudiantil_Universitario.Modales
 
         public frmOlvidoClave()
         {
-            Usuarios = new UsuariosModel(new UniDBEntity());
+            Usuarios = new UsuariosModel(new UniBDEntities());
             InitializeComponent();
         }
 

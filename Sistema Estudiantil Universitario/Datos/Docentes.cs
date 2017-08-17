@@ -18,7 +18,6 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public string Identificacion { get; set; }
-        public string Contacto { get; set; }
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public Nullable<int> Estatus { get; set; }
@@ -28,6 +27,7 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public string Matricula { get; set; }
         public int IdProfesion { get; set; }
+        public int Horario { get; set; }
     
         public virtual Profesiones Profesiones { get; set; }
     }

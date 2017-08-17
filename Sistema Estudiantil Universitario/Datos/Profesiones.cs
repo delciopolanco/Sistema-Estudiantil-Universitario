@@ -24,12 +24,14 @@ namespace Sistema_Estudiantil_Universitario.Datos
 
         public int Id { get; set; }
 
+        public string Codigo { get; set; }
+
         [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
         [StringLength(50, MinimumLength = 1, ErrorMessage = "* Debe ser mayor a 0 meses ")]
         public string Profesion { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
-        [Min(1, ErrorMessage = "* Debe ser mayor a 0 meses ")]
+        [Min(1, ErrorMessage = "* Debe ser mayor a 0")]
         public decimal Duracion { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

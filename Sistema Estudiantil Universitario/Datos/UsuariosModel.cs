@@ -71,7 +71,7 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public void Agregar(Usuarios usuario)
         {
 
-            using (var cx = new UniDBEntity())
+            using (var cx = new UniBDEntities())
             {
                 usuario.Estatus = (int)TipoEstatus.Activo;
                 usuario.FechaCreacion = DateTime.Now;

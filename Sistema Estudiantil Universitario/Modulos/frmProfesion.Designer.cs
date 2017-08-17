@@ -37,14 +37,17 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridUsuarios = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formulario = new System.Windows.Forms.TabPage();
+            this.txtCodigoProfesion = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.grpBox = new System.Windows.Forms.GroupBox();
+            this.txtDuracion = new System.Windows.Forms.NumericUpDown();
             this.lblErrortxtDuracion = new System.Windows.Forms.Label();
             this.lblErrortxtProfesion = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtDuracion = new System.Windows.Forms.NumericUpDown();
+            this.lblDuracion = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtProfesion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -142,6 +145,7 @@
             this.dataGridUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
+            this.Codigo,
             this.Profesion,
             this.Duracion});
             this.dataGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -162,6 +166,12 @@
             this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
             // Profesion
             // 
             this.Profesion.HeaderText = "Profesión";
@@ -176,6 +186,8 @@
             // 
             // formulario
             // 
+            this.formulario.Controls.Add(this.txtCodigoProfesion);
+            this.formulario.Controls.Add(this.label3);
             this.formulario.Controls.Add(this.grpBox);
             this.formulario.Controls.Add(this.btnGuardar);
             this.formulario.Controls.Add(this.btnCancelar);
@@ -187,21 +199,68 @@
             this.formulario.Text = "Agregar Profesión";
             this.formulario.UseVisualStyleBackColor = true;
             // 
+            // txtCodigoProfesion
+            // 
+            this.txtCodigoProfesion.Location = new System.Drawing.Point(286, 9);
+            this.txtCodigoProfesion.Name = "txtCodigoProfesion";
+            this.txtCodigoProfesion.ReadOnly = true;
+            this.txtCodigoProfesion.Size = new System.Drawing.Size(109, 20);
+            this.txtCodigoProfesion.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(240, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Código";
+            // 
             // grpBox
             // 
+            this.grpBox.Controls.Add(this.txtDuracion);
             this.grpBox.Controls.Add(this.lblErrortxtDuracion);
             this.grpBox.Controls.Add(this.lblErrortxtProfesion);
-            this.grpBox.Controls.Add(this.label2);
-            this.grpBox.Controls.Add(this.txtDuracion);
+            this.grpBox.Controls.Add(this.lblDuracion);
             this.grpBox.Controls.Add(this.label1);
             this.grpBox.Controls.Add(this.txtProfesion);
             this.grpBox.Controls.Add(this.label10);
-            this.grpBox.Location = new System.Drawing.Point(5, 7);
+            this.grpBox.Location = new System.Drawing.Point(5, 37);
             this.grpBox.Name = "grpBox";
-            this.grpBox.Size = new System.Drawing.Size(354, 117);
+            this.grpBox.Size = new System.Drawing.Size(390, 117);
             this.grpBox.TabIndex = 3;
             this.grpBox.TabStop = false;
             this.grpBox.Text = "Datos Estudiantiles";
+            // 
+            // txtDuracion
+            // 
+            this.txtDuracion.DecimalPlaces = 1;
+            this.txtDuracion.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.txtDuracion.Location = new System.Drawing.Point(155, 69);
+            this.txtDuracion.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.txtDuracion.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtDuracion.Name = "txtDuracion";
+            this.txtDuracion.Size = new System.Drawing.Size(71, 20);
+            this.txtDuracion.TabIndex = 10;
+            this.txtDuracion.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.txtDuracion.ValueChanged += new System.EventHandler(this.txtDuracion_ValueChanged);
+            this.txtDuracion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDuracion_Validating);
             // 
             // lblErrortxtDuracion
             // 
@@ -223,38 +282,19 @@
             this.lblErrortxtProfesion.Size = new System.Drawing.Size(0, 12);
             this.lblErrortxtProfesion.TabIndex = 8;
             // 
-            // label2
+            // lblDuracion
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(226, 72);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(37, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "meses";
-            // 
-            // txtDuracion
-            // 
-            this.txtDuracion.Location = new System.Drawing.Point(155, 69);
-            this.txtDuracion.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtDuracion.Name = "txtDuracion";
-            this.txtDuracion.Size = new System.Drawing.Size(67, 20);
-            this.txtDuracion.TabIndex = 6;
-            this.txtDuracion.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtDuracion.ValueChanged += new System.EventHandler(this.txtDuracion_ValueChanged);
-            this.txtDuracion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDuracion_Validating);
+            this.lblDuracion.AutoSize = true;
+            this.lblDuracion.Location = new System.Drawing.Point(226, 72);
+            this.lblDuracion.Name = "lblDuracion";
+            this.lblDuracion.Size = new System.Drawing.Size(34, 13);
+            this.lblDuracion.TabIndex = 7;
+            this.lblDuracion.Text = "1 año";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 69);
+            this.label1.Location = new System.Drawing.Point(28, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 5;
@@ -262,17 +302,19 @@
             // 
             // txtProfesion
             // 
+            this.txtProfesion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtProfesion.Location = new System.Drawing.Point(155, 30);
             this.txtProfesion.Name = "txtProfesion";
-            this.txtProfesion.Size = new System.Drawing.Size(175, 20);
+            this.txtProfesion.Size = new System.Drawing.Size(212, 20);
             this.txtProfesion.TabIndex = 4;
             this.txtProfesion.TextChanged += new System.EventHandler(this.txtProfesion_TextChanged);
+            this.txtProfesion.Leave += new System.EventHandler(this.txtProfesion_Leave);
             this.txtProfesion.Validating += new System.ComponentModel.CancelEventHandler(this.txtProfesion_Validating);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(28, 30);
+            this.label10.Location = new System.Drawing.Point(28, 33);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(51, 13);
             this.label10.TabIndex = 0;
@@ -280,7 +322,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(279, 136);
+            this.btnGuardar.Location = new System.Drawing.Point(297, 168);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
@@ -290,7 +332,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(198, 136);
+            this.btnCancelar.Location = new System.Drawing.Point(216, 168);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 0;
@@ -320,6 +362,7 @@
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridUsuarios)).EndInit();
             this.formulario.ResumeLayout(false);
+            this.formulario.PerformLayout();
             this.grpBox.ResumeLayout(false);
             this.grpBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracion)).EndInit();
@@ -342,13 +385,16 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.DataGridView dataGridUsuarios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown txtDuracion;
+        private System.Windows.Forms.Label lblDuracion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblErrortxtDuracion;
         private System.Windows.Forms.Label lblErrortxtProfesion;
+        private System.Windows.Forms.TextBox txtCodigoProfesion;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
+        private System.Windows.Forms.NumericUpDown txtDuracion;
     }
 }

@@ -19,12 +19,12 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
             <PropertyRef Name="FechaNacimiento" />
             <PropertyRef Name="Matricula" />
             <PropertyRef Name="IdProfesion" />
+            <PropertyRef Name="Horario" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Identificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Contacto" Type="nvarchar" MaxLength="100" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
           <Property Name="Estatus" Type="int" />
@@ -32,8 +32,9 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           <Property Name="Sexo" Type="int" Nullable="false" />
           <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" />
-          <Property Name="Matricula" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="IdProfesion" Type="int" Nullable="false" />
+          <Property Name="Horario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Profesiones">
           <Key>
@@ -41,7 +42,8 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Profesion" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Duracion" Type="decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Duracion" Type="decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="5" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -76,7 +78,6 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
     [Docentes].[Nombres] AS [Nombres], 
     [Docentes].[Apellidos] AS [Apellidos], 
     [Docentes].[Identificacion] AS [Identificacion], 
-    [Docentes].[Contacto] AS [Contacto], 
     [Docentes].[Direccion] AS [Direccion], 
     [Docentes].[Telefono] AS [Telefono], 
     [Docentes].[Estatus] AS [Estatus], 
@@ -85,7 +86,8 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
     [Docentes].[FechaNacimiento] AS [FechaNacimiento], 
     [Docentes].[FechaCreacion] AS [FechaCreacion], 
     [Docentes].[Matricula] AS [Matricula], 
-    [Docentes].[IdProfesion] AS [IdProfesion]
+    [Docentes].[IdProfesion] AS [IdProfesion], 
+    [Docentes].[Horario] AS [Horario]
     FROM [dbo].[Docentes] AS [Docentes]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK_Docentes_ToProfesiones" Association="Self.FK_Docentes_ToProfesiones">
@@ -104,7 +106,8 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Profesion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Duracion" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
+          <Property Name="Duracion" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
+          <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Docentes" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Profesiones" ToRole="Docentes" />
         </EntityType>
         <EntityType Name="Usuarios">
@@ -131,12 +134,12 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
             <PropertyRef Name="FechaNacimiento" />
             <PropertyRef Name="Matricula" />
             <PropertyRef Name="IdProfesion" />
+            <PropertyRef Name="Horario" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Contacto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Estatus" Type="Int32" />
@@ -144,8 +147,9 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           <Property Name="Sexo" Type="Int32" Nullable="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdProfesion" Type="Int32" Nullable="false" />
+          <Property Name="Horario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Profesiones" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />
         </EntityType>
         <Association Name="FK_Docentes_ToProfesiones">
@@ -160,7 +164,7 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="UniDBEntity" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="UniBDEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
           <EntitySet Name="Docentes" EntityType="Self.Docentes" />
@@ -174,13 +178,14 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="UniBDModelStoreContainer" CdmEntityContainer="UniDBEntity">
+        <EntityContainerMapping StorageEntityContainer="UniBDModelStoreContainer" CdmEntityContainer="UniBDEntities">
           <EntitySetMapping Name="Profesiones">
             <EntityTypeMapping TypeName="UniBDModel.Profesiones">
               <MappingFragment StoreEntitySet="Profesiones">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Profesion" ColumnName="Profesion" />
                 <ScalarProperty Name="Duracion" ColumnName="Duracion" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -204,7 +209,6 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Contacto" ColumnName="Contacto" />
                 <ScalarProperty Name="Direccion" ColumnName="Direccion" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
@@ -214,6 +218,7 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="Matricula" ColumnName="Matricula" />
                 <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -17,7 +17,7 @@ namespace Sistema_Estudiantil_Universitario.Modales
         public frmLogin()
         {
             InitializeComponent();
-            UsuariosBD = new UsuariosModel(new UniDBEntity());
+            UsuariosBD = new UsuariosModel(new UniBDEntities());
         }
 
         private void lnkOlvidoClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

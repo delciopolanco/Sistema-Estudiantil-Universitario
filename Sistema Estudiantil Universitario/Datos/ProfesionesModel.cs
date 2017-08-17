@@ -26,12 +26,13 @@ namespace Sistema_Estudiantil_Universitario.Datos
         {
             return Context.Set<Profesiones>().Where(p =>
                  p.Profesion.Contains(condicion) ||
+                 p.Codigo.Contains(condicion) ||
                  p.Duracion.ToString().Contains(condicion)).ToList();
         }
 
         public void Agregar(Profesiones profesion)
         {
-            using (var cx = new UniDBEntity())
+            using (var cx = new UniBDEntities())
             {
                 Context.Set<Profesiones>().Add(profesion);
                 Context.SaveChanges();

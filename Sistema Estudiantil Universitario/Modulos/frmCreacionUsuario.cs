@@ -20,7 +20,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         public frmCreacionUsuario()
         {
             InitializeComponent();
-            UsuariosBD = new UsuariosModel(new UniDBEntity());
+            UsuariosBD = new UsuariosModel(new UniBDEntities());
             NuevoUsuario = new Usuarios();
         }
 

@@ -3,6 +3,7 @@ using Sistema_Estudiantil_Universitario.Helpers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Sistema_Estudiantil_Universitario.Modulos
@@ -17,7 +18,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         public frmProfesion()
         {
             InitializeComponent();
-            ProfesionesBD = new ProfesionesModel(new UniDBEntity());
+            ProfesionesBD = new ProfesionesModel(new UniBDEntities());
             NuevaProfesion = new Profesiones();
         }
 
@@ -38,12 +39,26 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         {
             dataGridUsuarios.Rows.Clear();
             IEnumerable<Profesiones> listaProfesiones = lista;
+            string[] duracion = new string[] { };
+            int años = 0;
+            int meses = 0;
+
             foreach (Profesiones profesion in listaProfesiones)
             {
+                duracion = profesion.Duracion.ToString().Split('.');
+                años = int.Parse(duracion[0]);
+                meses = 0;
+
+                if (duracion.Length > 1)
+                    meses = int.Parse(duracion[1]);
+
+                string profesionDuracion = ObtenerDuracionLiteral(años, meses);
+
                 dataGridUsuarios.Rows.Add(
                     profesion.Id,
+                    profesion.Codigo,
                     profesion.Profesion,
-                    String.Format(((Math.Round(profesion.Duracion) == profesion.Duracion) ? "{0:0} meses" : "{0:0.0} meses"), profesion.Duracion)
+                    profesionDuracion
                 );
             }
         }
@@ -54,6 +69,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             {
                 Profesion = txtProfesion.Text.Trim(),
                 Duracion = txtDuracion.Value,
+                Codigo = txtCodigoProfesion.Text
             };
 
             if (!Utilitario.EsValido(this.grpBox, NuevaProfesion) || !profesionValidacion)
@@ -63,19 +79,25 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
             try
             {
-                Cursor = Cursors.WaitCursor;
-                ProfesionesBD.Agregar(NuevaProfesion);
-                NuevaProfesion = new Profesiones();
-                Utilitario.LimpiarCampos(this.grpBox);
+                var insetar = Utilitario.Pregunta("¿Desea realmente insertar esta profesión?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                var respuesta = Utilitario.Pregunta("Profesión insertada correctamente." + Environment.NewLine + "¿Desea insertar otra profesión?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                if (respuesta == DialogResult.No)
+                if (insetar == DialogResult.Yes)
                 {
-                    btnCancelar.PerformClick();
+                    Cursor = Cursors.WaitCursor;
+                    ProfesionesBD.Agregar(NuevaProfesion);
+                    NuevaProfesion = new Profesiones();
+                    Utilitario.LimpiarCampos(this.grpBox);
+
+                    var respuesta = Utilitario.Pregunta("Profesión insertada correctamente." + Environment.NewLine + "¿Desea insertar otra profesión?", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                    if (respuesta == DialogResult.No)
+                    {
+                        btnCancelar.PerformClick();
+                    }
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Utilitario.Mensaje("Error al insertar la profesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -107,6 +129,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void txtProfesion_TextChanged(object sender, EventArgs e)
         {
+            txtCodigoProfesion.Text = string.Empty;
             lblErrortxtProfesion.Text = string.Empty;
             NuevaProfesion.Profesion = txtProfesion.Text.Trim();
         }
@@ -138,17 +161,85 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             btnBuscar.PerformClick();
         }
 
+        private string ObtenerDuracionLiteral(int años, int meses)
+        {
+            string literalAños = años > 1 ? " años y " : " año y ";
+            string literalMeses = meses > 1 ? " meses" : " mes";
+
+            if (meses == 0)
+            {
+                return años > 1 ? años + " años" : años + " año";
+            }
+            return años + literalAños + meses + literalMeses;
+        }
+
         private void txtDuracion_ValueChanged(object sender, EventArgs e)
         {
             lblErrortxtDuracion.Text = string.Empty;
             NuevaProfesion.Duracion = txtDuracion.Value;
+
+            if (txtDuracion.Value <= 100)
+            {
+                string[] duracion = txtDuracion.Value.ToString().Split('.');
+                int años = int.Parse(duracion[0]);
+                int meses = 0;
+
+                if (duracion.Length > 1)
+                {
+                    meses = int.Parse(duracion[1]);
+                }
+                lblDuracion.Text = ObtenerDuracionLiteral(años, meses);
+            }
+
         }
 
         private void txtDuracion_Validating(object sender, CancelEventArgs e)
         {
+
             if (!Utilitario.EsValido(this.grpBox, Duracion, nameof(NuevaProfesion.Duracion)))
             {
                 return;
+            }
+        }
+
+        private string ObtenerCodigo(string[] profesion)
+        {
+            var codigo = string.Empty;
+            string[] conectores = new string[] { "de", "la", "en" };
+
+            foreach (string palabra in profesion)
+            {
+                if (!palabra.ToLower().Contains("de") && !palabra.ToLower().Contains("la") && !palabra.ToLower().Contains("en"))
+                    {
+                    codigo = palabra.Substring(0, 1);
+                    break;
+                }
+            }
+            return codigo;
+        }
+
+        private void txtProfesion_Leave(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtProfesion.Text))
+            {
+                char[] delimitadores = new char[] { ' ' };
+                string[] profesion = txtProfesion.Text.Split(delimitadores, StringSplitOptions.RemoveEmptyEntries);
+                string codigo = txtProfesion.Text.Substring(0, 1);
+
+                if (profesion.Length > 1)
+                {
+                    codigo += this.ObtenerCodigo(profesion.Where((source, index) => index != 0).ToArray());
+                }
+                else
+                {
+                    codigo += codigo;
+                }
+
+                txtCodigoProfesion.Text = codigo;
+            }
+            else
+            {
+                txtCodigoProfesion.Text = string.Empty;
             }
         }
     }

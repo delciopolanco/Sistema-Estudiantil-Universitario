@@ -13,10 +13,10 @@ namespace Sistema_Estudiantil_Universitario.Datos
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class UniDBEntity : DbContext
+    public partial class UniBDEntities : DbContext
     {
-        public UniDBEntity()
-            : base("name=UniDBEntity")
+        public UniBDEntities()
+            : base("name=UniBDEntities")
         {
         }
     
