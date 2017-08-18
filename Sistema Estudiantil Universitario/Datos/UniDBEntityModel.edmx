@@ -20,7 +20,7 @@
           <Property Name="Sexo" Type="int" Nullable="false" />
           <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" />
-          <Property Name="Matricula" Type="nvarchar" MaxLength="10" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="50" />
           <Property Name="IdProfesion" Type="int" Nullable="false" />
           <Property Name="Horario" Type="int" Nullable="false" />
         </EntityType>
@@ -93,7 +93,7 @@
           <Property Name="Sexo" Type="Int32" Nullable="false" />
           <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IdProfesion" Type="Int32" Nullable="false" />
           <Property Name="Horario" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Profesiones" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />

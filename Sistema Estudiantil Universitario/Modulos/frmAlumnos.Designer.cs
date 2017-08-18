@@ -75,7 +75,7 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Identificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
@@ -155,6 +155,7 @@
             this.btnBuscar.TabIndex = 0;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // dataGridUsuarios
             // 
@@ -170,7 +171,7 @@
             this.Nombre,
             this.Apellidos,
             this.Identificacion,
-            this.Telefono,
+            this.Matricula,
             this.Profesion});
             this.dataGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridUsuarios.Location = new System.Drawing.Point(0, 0);
@@ -564,11 +565,11 @@
             this.Identificacion.Name = "Identificacion";
             this.Identificacion.ReadOnly = true;
             // 
-            // Telefono
+            // Matricula
             // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
+            this.Matricula.HeaderText = "Matricula";
+            this.Matricula.Name = "Matricula";
+            this.Matricula.ReadOnly = true;
             // 
             // Profesion
             // 
@@ -650,7 +651,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn Identificacion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telefono;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Matricula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
     }
 }

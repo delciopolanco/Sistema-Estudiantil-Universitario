@@ -28,21 +28,20 @@ namespace Sistema_Estudiantil_Universitario.Datos
                  p.Nombres.Contains(condicion) ||
                  p.Apellidos.Contains(condicion) ||
                  p.Identificacion.Contains(condicion) || 
-                 p.Profesiones.Profesion.Contains(condicion)).ToList();
+                 p.Profesiones.Profesion.Contains(condicion) ||
+                 p.Matricula.Contains(condicion)).ToList();
         }
 
         public void Agregar(Docentes docente)
         {
-            using (var cx = new UniBDEntities())
-            {
-                cx.Set<Docentes>().Add(docente);
-                docente.FechaCreacion = DateTime.Now;
-                docente.Estatus = (int)Enums.Estatus.TipoEstatus.Activo;
-                cx.SaveChanges();
-            }
+            Context.Set<Docentes>().Add(docente);
+            docente.FechaCreacion = DateTime.Now;
+            docente.Estatus = (int)Enums.Estatus.TipoEstatus.Activo;
+            Context.SaveChanges();
 
             var iDocente = Context.Docentes.Where(d => d.Id == docente.Id).FirstOrDefault();
             iDocente.Matricula = Helpers.Utilitario.ObtenerMatricula(docente.FechaCreacion, docente.CodigoProfesion, docente.Tanda, docente.TipoDocente, docente.Id);
+            Context.Entry(docente).State = EntityState.Modified;
             Context.SaveChanges();
         }
 

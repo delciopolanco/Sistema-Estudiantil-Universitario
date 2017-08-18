@@ -37,6 +37,11 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         {
             formulario.Hide();
             listado.Show();
+            Cursor = Cursors.WaitCursor;
+            llenarDataGrid(DocentesBD.Filtrar());
+            Cursor = Cursors.Arrow;
+
+            llenarHorarios();
         }
 
         private void frmAlumnos_Load(object sender, EventArgs e)
@@ -75,7 +80,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
                     docente.Nombres,
                     docente.Apellidos,
                     docente.Identificacion,
-                    docente.Telefono,
+                    docente.Matricula,
                     docente.Profesiones.Profesion);
             }
         }
@@ -236,6 +241,20 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             {
                 return;
             }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            if (!string.IsNullOrEmpty(txtBuscar.Text))
+            {
+                llenarDataGrid(DocentesBD.Filtrar(txtBuscar.Text.Trim()));
+            }
+            else
+            {
+                llenarDataGrid(DocentesBD.Filtrar());
+            }
+            Cursor = Cursors.Arrow;
         }
     }
 }
