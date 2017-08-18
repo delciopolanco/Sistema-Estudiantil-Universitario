@@ -1,20 +1,17 @@
-﻿using Sistema_Estudiantil_Universitario.Datos;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Sistema_Estudiantil_Universitario.Datos
 {
     class ProfesionesModel
     {
-        protected readonly DbContext Context;
+        protected readonly UniBDEntities Context;
 
-        public ProfesionesModel(DbContext context)
+        public ProfesionesModel()
         {
-            Context = context;
+            Context = new UniBDEntities();
         }
 
         public IEnumerable<Profesiones> Filtrar()
@@ -42,14 +39,7 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public bool Existe(string profesion)
         {
             var pprofesion = this.Filtrar(profesion);
-            bool existe = false;
-
-            if (pprofesion.Count() > 0)
-            {
-                existe = true;
-            }
-
-            return existe;
+            return pprofesion.Count() > 0 ? true: false;
         }
     }
 }

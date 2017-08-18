@@ -76,6 +76,11 @@
     <Compile Include="Datos\Docentes.cs">
       <DependentUpon>UniDBEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\DocentesModel.cs" />
+    <Compile Include="Datos\Horarios.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\HorariosModel.cs" />
     <Compile Include="Datos\Metadata.cs" />
     <Compile Include="Datos\Profesiones.cs">
       <DependentUpon>UniDBEntityModel.tt</DependentUpon>
@@ -102,6 +107,7 @@
     <Compile Include="Enums\Errores.cs" />
     <Compile Include="Enums\Estatus.cs" />
     <Compile Include="Enums\MenuOpciones.cs" />
+    <Compile Include="Enums\TipoDocentes.cs" />
     <Compile Include="frmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,12 @@
     </Compile>
     <Compile Include="Datos\ProfesionesModel.cs" />
     <Compile Include="Datos\UsuariosModel.cs" />
+    <Compile Include="Modales\frmListadoProfesiones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\frmListadoProfesiones.Designer.cs">
+      <DependentUpon>frmListadoProfesiones.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modulos\frmAlumnos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\frmOlvidoClave.resx">
       <DependentUpon>frmOlvidoClave.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\frmListadoProfesiones.resx">
+      <DependentUpon>frmListadoProfesiones.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modulos\frmAlumnos.resx">
       <DependentUpon>frmAlumnos.cs</DependentUpon>

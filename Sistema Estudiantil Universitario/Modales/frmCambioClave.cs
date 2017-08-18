@@ -14,7 +14,7 @@ namespace Sistema_Estudiantil_Universitario.Modales
         public frmCambioClave()
         {
             InitializeComponent();
-            UsuariosBD = new UsuariosModel(new UniBDEntities());
+            UsuariosBD = new UsuariosModel();
             NuevoUsuario = new Usuarios();
         }
 

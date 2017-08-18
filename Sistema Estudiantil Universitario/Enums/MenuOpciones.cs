@@ -7,49 +7,6 @@ using System.Threading.Tasks;
 
 namespace Sistema_Estudiantil_Universitario.Enums
 {
-    class MenuOpciones
-    {
-        public enum MANTENIMIENTOS
-        {
-            [Description("Maestro")]
-            Maestro,
-            [Description("Alumno")]
-            Alumno,
-            [Description("Seccion")]
-            Seccion,
-            [Description("Asignatura")]
-            Asignatura,
-            [Description("Horario")]
-            Horario,
-            [Description("Profesion")]
-            Profesion
-        }
-
-        public enum Reportes
-        {
-            Maestro,
-            Alumno,
-            Seccion,
-            Asignatura,
-            Horario,
-            Profesion
-        }
-
-        public enum Seguridad
-        {
-            [Description("Cambiar contraseña")]
-            Cambiar_Contraseña,
-            [Description("Nuevo Usuario")]
-            Crear_Usuario
-        }
-    }
-
-    public class Opcion
-    {
-        public string Value { get; set; }
-        public string Text { get; set; }
-    }
-
     public static class EnumExtensions
     {
 
@@ -71,14 +28,6 @@ namespace Sistema_Estudiantil_Universitario.Enums
             return attribute == null ? message + " " + value.ToString() : message + " " + attribute.Description;
         }
 
-        public static Opcion GetOpcion(this Enum value)
-        {
-            return new Opcion
-            {
-                Text = value.ToName(),
-                Value = value.ToString()
-            };
-        }
 
     }
 }

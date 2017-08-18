@@ -10,23 +10,49 @@
 namespace Sistema_Estudiantil_Universitario.Datos
 {
     using System;
-    using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Docentes
     {
         public int Id { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
+        [StringLength(50, ErrorMessage = "* No debe ser mayor a 50 caracteres")]
         public string Nombres { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
+        [StringLength(50, ErrorMessage = "* No debe ser mayor a 50 caracteres")]
         public string Apellidos { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
+        [StringLength(15,  ErrorMessage = "* No debe ser mayor a 15 caracteres")]
         public string Identificacion { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
+        [StringLength(100, ErrorMessage = "* No debe ser mayor a 100 caracteres")]
         public string Direccion { get; set; }
+
+        [StringLength(15, ErrorMessage = "* No debe ser mayor a 15 caracteres")]
         public string Telefono { get; set; }
+
         public Nullable<int> Estatus { get; set; }
-        public int TipoPersona { get; set; }
+        public int TipoDocente { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
         public int Sexo { get; set; }
+
         public System.DateTime FechaNacimiento { get; set; }
         public Nullable<System.DateTime> FechaCreacion { get; set; }
         public string Matricula { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
+        [Range(1, int.MaxValue, ErrorMessage = "* Requerido")]
         public int IdProfesion { get; set; }
+
+        public string CodigoProfesion { get; set; }
+        public string Tanda { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
         public int Horario { get; set; }
     
         public virtual Profesiones Profesiones { get; set; }

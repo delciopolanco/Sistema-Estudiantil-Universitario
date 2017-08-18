@@ -10,12 +10,13 @@ namespace Sistema_Estudiantil_Universitario.Datos
 {
     public partial class UsuariosModel
     {
-        protected readonly DbContext Context;
+        protected readonly UniBDEntities Context;
 
-        public UsuariosModel(DbContext context)
+        public UsuariosModel()
         {
-            Context = context;
+            Context = new UniBDEntities();
         }
+
 
         public IEnumerable<Usuarios> Filtrar()
         {

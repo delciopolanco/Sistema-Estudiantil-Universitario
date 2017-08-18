@@ -4,37 +4,32 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="UniBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PROJECTS\SISTEMA ESTUDIANTIL UNIVERSITARIO\SISTEMA ESTUDIANTIL UNIVERSITARIO\UNIBD.MDF.dbo.Docentes' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+    <Schema Namespace="UniBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Docentes">
           <Key>
             <PropertyRef Name="Id" />
-            <PropertyRef Name="Nombres" />
-            <PropertyRef Name="Apellidos" />
-            <PropertyRef Name="Identificacion" />
-            <PropertyRef Name="Direccion" />
-            <PropertyRef Name="TipoPersona" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="FechaNacimiento" />
-            <PropertyRef Name="Matricula" />
-            <PropertyRef Name="IdProfesion" />
-            <PropertyRef Name="Horario" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombres" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Apellidos" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Identificacion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Identificacion" Type="nvarchar" MaxLength="15" Nullable="false" />
           <Property Name="Direccion" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="15" />
           <Property Name="Estatus" Type="int" />
-          <Property Name="TipoPersona" Type="int" Nullable="false" />
+          <Property Name="TipoDocente" Type="int" Nullable="false" />
           <Property Name="Sexo" Type="int" Nullable="false" />
           <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
           <Property Name="FechaCreacion" Type="datetime" />
-          <Property Name="Matricula" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Matricula" Type="nvarchar" MaxLength="10" />
           <Property Name="IdProfesion" Type="int" Nullable="false" />
           <Property Name="Horario" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Horarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Horario" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Profesiones">
           <Key>
@@ -70,36 +65,46 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UniBDModelStoreContainer">
+          <EntitySet Name="Docentes" EntityType="Self.Docentes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Docentes" EntityType="Self.Docentes" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Docentes].[Id] AS [Id], 
-    [Docentes].[Nombres] AS [Nombres], 
-    [Docentes].[Apellidos] AS [Apellidos], 
-    [Docentes].[Identificacion] AS [Identificacion], 
-    [Docentes].[Direccion] AS [Direccion], 
-    [Docentes].[Telefono] AS [Telefono], 
-    [Docentes].[Estatus] AS [Estatus], 
-    [Docentes].[TipoPersona] AS [TipoPersona], 
-    [Docentes].[Sexo] AS [Sexo], 
-    [Docentes].[FechaNacimiento] AS [FechaNacimiento], 
-    [Docentes].[FechaCreacion] AS [FechaCreacion], 
-    [Docentes].[Matricula] AS [Matricula], 
-    [Docentes].[IdProfesion] AS [IdProfesion], 
-    [Docentes].[Horario] AS [Horario]
-    FROM [dbo].[Docentes] AS [Docentes]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_Docentes_ToProfesiones" Association="Self.FK_Docentes_ToProfesiones">
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Docentes" EntitySet="Docentes" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UniBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Docentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Estatus" Type="Int32" />
+          <Property Name="TipoDocente" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IdProfesion" Type="Int32" Nullable="false" />
+          <Property Name="Horario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Profesiones" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />
+        </EntityType>
+        <EntityType Name="Horarios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Horario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Profesiones">
           <Key>
             <PropertyRef Name="Id" />
@@ -122,36 +127,6 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           <Property Name="FechaUltimoLogeo" Type="DateTime" Precision="3" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
         </EntityType>
-        <EntityType Name="Docentes">
-          <Key>
-            <PropertyRef Name="Id" />
-            <PropertyRef Name="Nombres" />
-            <PropertyRef Name="Apellidos" />
-            <PropertyRef Name="Identificacion" />
-            <PropertyRef Name="Direccion" />
-            <PropertyRef Name="TipoPersona" />
-            <PropertyRef Name="Sexo" />
-            <PropertyRef Name="FechaNacimiento" />
-            <PropertyRef Name="Matricula" />
-            <PropertyRef Name="IdProfesion" />
-            <PropertyRef Name="Horario" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Identificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Estatus" Type="Int32" />
-          <Property Name="TipoPersona" Type="Int32" Nullable="false" />
-          <Property Name="Sexo" Type="Int32" Nullable="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <Property Name="Matricula" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IdProfesion" Type="Int32" Nullable="false" />
-          <Property Name="Horario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Profesiones" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />
-        </EntityType>
         <Association Name="FK_Docentes_ToProfesiones">
           <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
           <End Role="Docentes" Type="Self.Docentes" Multiplicity="*" />
@@ -165,9 +140,10 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UniBDEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Docentes" EntityType="Self.Docentes" />
+          <EntitySet Name="Horarios" EntityType="Self.Horarios" />
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-          <EntitySet Name="Docentes" EntityType="Self.Docentes" />
           <AssociationSet Name="FK_Docentes_ToProfesiones" Association="Self.FK_Docentes_ToProfesiones">
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Docentes" EntitySet="Docentes" />
@@ -179,6 +155,34 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UniBDModelStoreContainer" CdmEntityContainer="UniBDEntities">
+          <EntitySetMapping Name="Docentes">
+            <EntityTypeMapping TypeName="UniBDModel.Docentes">
+              <MappingFragment StoreEntitySet="Docentes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="TipoDocente" ColumnName="TipoDocente" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Horarios">
+            <EntityTypeMapping TypeName="UniBDModel.Horarios">
+              <MappingFragment StoreEntitySet="Horarios">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Profesiones">
             <EntityTypeMapping TypeName="UniBDModel.Profesiones">
               <MappingFragment StoreEntitySet="Profesiones">
@@ -199,26 +203,6 @@ advertencia 6002: La tabla o vista '1D798C2796DB09839323FEF5A4E3540F_DIO 2017\PR
                 <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
                 <ScalarProperty Name="FechaUltimoLogeo" ColumnName="FechaUltimoLogeo" />
                 <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Docentes">
-            <EntityTypeMapping TypeName="UniBDModel.Docentes">
-              <MappingFragment StoreEntitySet="Docentes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="TipoPersona" ColumnName="TipoPersona" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
-                <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
-                <ScalarProperty Name="Horario" ColumnName="Horario" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

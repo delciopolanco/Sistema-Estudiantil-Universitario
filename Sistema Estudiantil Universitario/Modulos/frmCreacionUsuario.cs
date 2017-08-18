@@ -20,7 +20,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         public frmCreacionUsuario()
         {
             InitializeComponent();
-            UsuariosBD = new UsuariosModel(new UniBDEntities());
+            UsuariosBD = new UsuariosModel();
             NuevoUsuario = new Usuarios();
         }
 
@@ -180,8 +180,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         private void llenarDataGrid(IEnumerable<Usuarios> lista)
         {
             dataGridUsuarios.Rows.Clear();
-            IEnumerable<Usuarios> listanuevoUsuario = lista;
-            foreach (Usuarios usuario in listanuevoUsuario)
+            foreach (Usuarios usuario in lista)
             {
                 dataGridUsuarios.Rows.Add(
                     usuario.Id,

@@ -4,10 +4,11 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6187cdb8a6544b08e6ea16befc88794" Name="Diagram1">
-        <EntityTypeShape EntityType="UniBDModel.Profesiones" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="UniBDModel.Usuarios" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="b4f8cd38a7564dbba86503b0de4b4172" Name="Diagram1">
         <EntityTypeShape EntityType="UniBDModel.Docentes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniBDModel.Horarios" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniBDModel.Profesiones" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="UniBDModel.Usuarios" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="UniBDModel.FK_Docentes_ToProfesiones" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

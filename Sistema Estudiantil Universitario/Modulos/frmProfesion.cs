@@ -18,7 +18,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         public frmProfesion()
         {
             InitializeComponent();
-            ProfesionesBD = new ProfesionesModel(new UniBDEntities());
+            ProfesionesBD = new ProfesionesModel();
             NuevaProfesion = new Profesiones();
         }
 
@@ -37,7 +37,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void llenarDataGrid(IEnumerable<Profesiones> lista)
         {
-            dataGridUsuarios.Rows.Clear();
+            dataGridProfesiones.Rows.Clear();
             IEnumerable<Profesiones> listaProfesiones = lista;
             string[] duracion = new string[] { };
             int años = 0;
@@ -54,7 +54,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
                 string profesionDuracion = ObtenerDuracionLiteral(años, meses);
 
-                dataGridUsuarios.Rows.Add(
+                dataGridProfesiones.Rows.Add(
                     profesion.Id,
                     profesion.Codigo,
                     profesion.Profesion,
@@ -97,7 +97,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Utilitario.Mensaje("Error al insertar la profesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -107,7 +107,6 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void txtProfesion_Validating(object sender, CancelEventArgs e)
         {
-
 
             if (!Utilitario.EsValido(this.grpBox, NuevaProfesion, nameof(NuevaProfesion.Profesion)))
             {

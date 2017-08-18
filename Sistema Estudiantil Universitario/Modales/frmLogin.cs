@@ -10,14 +10,12 @@ namespace Sistema_Estudiantil_Universitario.Modales
     public partial class frmLogin : Form
     {
         private UsuariosModel UsuariosBD;
-        private Usuarios NuevoUsuario;
-
         private bool validacionesExitosas = true;
 
         public frmLogin()
         {
             InitializeComponent();
-            UsuariosBD = new UsuariosModel(new UniBDEntities());
+            UsuariosBD = new UsuariosModel();
         }
 
         private void lnkOlvidoClave_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

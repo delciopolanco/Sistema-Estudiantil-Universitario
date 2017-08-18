@@ -46,6 +46,16 @@ namespace Sistema_Estudiantil_Universitario.Helpers
             return invalidos;
         }
 
+        internal static string ObtenerMatricula(DateTime? fechaCreacion, string codigoProfesion, string tanda, int tipoDocente, int id)
+        {
+            string año = String.Format("{0:yy}", fechaCreacion);
+            string mes = String.Format("{0:MM}", fechaCreacion).Substring(0, 1);
+            tanda = tanda.Substring(0, 1);
+
+            return string.Concat(año, "-", mes, codigoProfesion, tanda, "-", tipoDocente, "-", id.ToString("D3"));
+
+        }
+
         public static bool EsValido(Control formulario, Object entidad, string propiedad = "")
         {
             bool esValido = true;
@@ -71,7 +81,7 @@ namespace Sistema_Estudiantil_Universitario.Helpers
             return esValido;
         }
 
-       
+
         public static bool EsValido(Control formulario, string nombreCampo = "")
         {
             bool esValido = true;
@@ -82,8 +92,8 @@ namespace Sistema_Estudiantil_Universitario.Helpers
                 if (!string.IsNullOrEmpty(nombreCampo))
                 {
                     if (nombreCampo == campo)
-                    {   
-                        SetearLabelError(formulario,campo);
+                    {
+                        SetearLabelError(formulario, campo);
                         esValido = false;
                         return false;
                     }

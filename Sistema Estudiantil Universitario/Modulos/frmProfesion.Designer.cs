@@ -35,7 +35,7 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.dataGridUsuarios = new System.Windows.Forms.DataGridView();
+            this.dataGridProfesiones = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,7 +59,7 @@
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridUsuarios)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProfesiones)).BeginInit();
             this.formulario.SuspendLayout();
             this.grpBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtDuracion)).BeginInit();
@@ -102,7 +102,7 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridUsuarios);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridProfesiones);
             this.splitContainer1.Size = new System.Drawing.Size(412, 262);
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 0;
@@ -134,30 +134,30 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // dataGridUsuarios
+            // dataGridProfesiones
             // 
-            this.dataGridUsuarios.AllowUserToAddRows = false;
-            this.dataGridUsuarios.AllowUserToDeleteRows = false;
-            this.dataGridUsuarios.AllowUserToOrderColumns = true;
-            this.dataGridUsuarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridUsuarios.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
-            this.dataGridUsuarios.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
-            this.dataGridUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridProfesiones.AllowUserToAddRows = false;
+            this.dataGridProfesiones.AllowUserToDeleteRows = false;
+            this.dataGridProfesiones.AllowUserToOrderColumns = true;
+            this.dataGridProfesiones.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridProfesiones.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridProfesiones.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dataGridProfesiones.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridProfesiones.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.Codigo,
             this.Profesion,
             this.Duracion});
-            this.dataGridUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.dataGridUsuarios.Name = "dataGridUsuarios";
-            this.dataGridUsuarios.ReadOnly = true;
-            this.dataGridUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridUsuarios.RowHeadersVisible = false;
-            this.dataGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridUsuarios.Size = new System.Drawing.Size(412, 191);
-            this.dataGridUsuarios.StandardTab = true;
-            this.dataGridUsuarios.TabIndex = 2;
+            this.dataGridProfesiones.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridProfesiones.Location = new System.Drawing.Point(0, 0);
+            this.dataGridProfesiones.Name = "dataGridProfesiones";
+            this.dataGridProfesiones.ReadOnly = true;
+            this.dataGridProfesiones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridProfesiones.RowHeadersVisible = false;
+            this.dataGridProfesiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridProfesiones.Size = new System.Drawing.Size(412, 191);
+            this.dataGridProfesiones.StandardTab = true;
+            this.dataGridProfesiones.TabIndex = 2;
             // 
             // Id
             // 
@@ -360,7 +360,7 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridUsuarios)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridProfesiones)).EndInit();
             this.formulario.ResumeLayout(false);
             this.formulario.PerformLayout();
             this.grpBox.ResumeLayout(false);
@@ -384,7 +384,7 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.DataGridView dataGridUsuarios;
+        private System.Windows.Forms.DataGridView dataGridProfesiones;
         private System.Windows.Forms.Label lblDuracion;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblErrortxtDuracion;
