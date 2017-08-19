@@ -18,6 +18,7 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public Horarios()
         {
             this.ProfesionesHorarios = new HashSet<ProfesionesHorarios>();
+            this.Docentes = new HashSet<Docentes>();
         }
 
         public int Id { get; set; }
@@ -28,5 +29,8 @@ namespace Sistema_Estudiantil_Universitario.Datos
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProfesionesHorarios> ProfesionesHorarios { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Docentes> Docentes { get; set; }
     }
 }

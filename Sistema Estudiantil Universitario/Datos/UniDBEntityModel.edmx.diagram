@@ -5,15 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b4f8cd38a7564dbba86503b0de4b4172" Name="Diagram1">
-        <EntityTypeShape EntityType="UniBDModel.Docentes" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="UniBDModel.Horarios" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="UniBDModel.Profesiones" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="UniBDModel.Usuarios" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="UniBDModel.FK_Docentes_ToProfesiones" ManuallyRouted="false" />
         <EntityTypeShape EntityType="UniBDModel.ProfesionesHorarios" Width="1.5" PointX="8" PointY="1.5" />
         <AssociationConnector Association="UniBDModel.FK_ProfesionesHorarios_ToHorarios" />
         <AssociationConnector Association="UniBDModel.FK_ProfesionesHorarios_ToProfesiones" />
-      </Diagram>
+        <EntityTypeShape EntityType="UniBDModel.Docentes" Width="1.5" PointX="11" PointY="0.75" />
+        <AssociationConnector Association="UniBDModel.FK_Docentes_ToHorarios" />
+        <AssociationConnector Association="UniBDModel.FK_Docentes_ToProfesiones" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

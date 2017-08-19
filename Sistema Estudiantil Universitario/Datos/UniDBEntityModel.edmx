@@ -22,7 +22,7 @@
           <Property Name="FechaCreacion" Type="datetime" />
           <Property Name="Matricula" Type="nvarchar" MaxLength="50" />
           <Property Name="IdProfesion" Type="int" Nullable="false" />
-          <Property Name="Horario" Type="int" Nullable="false" />
+          <Property Name="IdHorario" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Horarios">
           <Key>
@@ -60,6 +60,18 @@
           <Property Name="FechaUltimoLogeo" Type="datetime" />
           <Property Name="Estatus" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Docentes_ToHorarios">
+          <End Role="Horarios" Type="Self.Horarios" Multiplicity="1" />
+          <End Role="Docentes" Type="Self.Docentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docentes">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Docentes_ToProfesiones">
           <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
           <End Role="Docentes" Type="Self.Docentes" Multiplicity="*" />
@@ -102,6 +114,10 @@
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProfesionesHorarios" EntityType="Self.ProfesionesHorarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Docentes_ToHorarios" Association="Self.FK_Docentes_ToHorarios">
+            <End Role="Horarios" EntitySet="Horarios" />
+            <End Role="Docentes" EntitySet="Docentes" />
+          </AssociationSet>
           <AssociationSet Name="FK_Docentes_ToProfesiones" Association="Self.FK_Docentes_ToProfesiones">
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Docentes" EntitySet="Docentes" />
@@ -119,26 +135,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="UniBDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Docentes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Identificacion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
-          <Property Name="Estatus" Type="Int32" />
-          <Property Name="TipoDocente" Type="Int32" Nullable="false" />
-          <Property Name="Sexo" Type="Int32" Nullable="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
-          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IdProfesion" Type="Int32" Nullable="false" />
-          <Property Name="Horario" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Profesiones" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />
-        </EntityType>
         <EntityType Name="Horarios">
           <Key>
             <PropertyRef Name="Id" />
@@ -146,6 +142,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Horario" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="ProfesionesHorarios" Relationship="UniBDModel.FK_ProfesionesHorarios_ToHorarios" FromRole="Horarios" ToRole="ProfesionesHorarios" />
+          <NavigationProperty Name="Docentes" Relationship="UniBDModel.FK_Docentes_ToHorarios" FromRole="Horarios" ToRole="Docentes" />
         </EntityType>
         <EntityType Name="Profesiones">
           <Key>
@@ -155,8 +152,8 @@
           <Property Name="Profesion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Duracion" Type="Decimal" Precision="4" Scale="1" Nullable="false" />
           <Property Name="Codigo" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Docentes" Relationship="Self.FK_Docentes_ToProfesiones" FromRole="Profesiones" ToRole="Docentes" />
           <NavigationProperty Name="ProfesionesHorarios" Relationship="UniBDModel.FK_ProfesionesHorarios_ToProfesiones" FromRole="Profesiones" ToRole="ProfesionesHorarios" />
+          <NavigationProperty Name="Docentes" Relationship="UniBDModel.FK_Docentes_ToProfesiones" FromRole="Profesiones" ToRole="Docentes" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -170,27 +167,10 @@
           <Property Name="FechaUltimoLogeo" Type="DateTime" Precision="3" />
           <Property Name="Estatus" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Docentes_ToProfesiones">
-          <End Role="Profesiones" Type="Self.Profesiones" Multiplicity="1" />
-          <End Role="Docentes" Type="Self.Docentes" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Profesiones">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Docentes">
-              <PropertyRef Name="IdProfesion" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="UniBDEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Docentes" EntityType="Self.Docentes" />
           <EntitySet Name="Horarios" EntityType="Self.Horarios" />
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
-          <AssociationSet Name="FK_Docentes_ToProfesiones" Association="Self.FK_Docentes_ToProfesiones">
-            <End Role="Profesiones" EntitySet="Profesiones" />
-            <End Role="Docentes" EntitySet="Docentes" />
-          </AssociationSet>
           <EntitySet Name="ProfesionesHorarios" EntityType="UniBDModel.ProfesionesHorarios" />
           <AssociationSet Name="FK_ProfesionesHorarios_ToHorarios" Association="UniBDModel.FK_ProfesionesHorarios_ToHorarios">
             <End Role="Horarios" EntitySet="Horarios" />
@@ -200,7 +180,16 @@
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="ProfesionesHorarios" EntitySet="ProfesionesHorarios" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="Docentes" EntityType="UniBDModel.Docentes" />
+          <AssociationSet Name="FK_Docentes_ToHorarios" Association="UniBDModel.FK_Docentes_ToHorarios">
+            <End Role="Horarios" EntitySet="Horarios" />
+            <End Role="Docentes" EntitySet="Docentes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Docentes_ToProfesiones" Association="UniBDModel.FK_Docentes_ToProfesiones">
+            <End Role="Profesiones" EntitySet="Profesiones" />
+            <End Role="Docentes" EntitySet="Docentes" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="ProfesionesHorarios">
           <Key>
             <PropertyRef Name="Id" />
@@ -235,32 +224,57 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Docentes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Identificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Estatus" Type="Int32" />
+          <Property Name="TipoDocente" Type="Int32" Nullable="false" />
+          <Property Name="Sexo" Type="Int32" Nullable="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdProfesion" Type="Int32" Nullable="false" />
+          <Property Name="IdHorario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Horarios" Relationship="UniBDModel.FK_Docentes_ToHorarios" FromRole="Docentes" ToRole="Horarios" />
+          <NavigationProperty Name="Profesiones" Relationship="UniBDModel.FK_Docentes_ToProfesiones" FromRole="Docentes" ToRole="Profesiones" />
+        </EntityType>
+        <Association Name="FK_Docentes_ToHorarios">
+          <End Type="UniBDModel.Horarios" Role="Horarios" Multiplicity="1" />
+          <End Type="UniBDModel.Docentes" Role="Docentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Horarios">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docentes">
+              <PropertyRef Name="IdHorario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Docentes_ToProfesiones">
+          <End Type="UniBDModel.Profesiones" Role="Profesiones" Multiplicity="1" />
+          <End Type="UniBDModel.Docentes" Role="Docentes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Profesiones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Docentes">
+              <PropertyRef Name="IdProfesion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="UniBDModelStoreContainer" CdmEntityContainer="UniBDEntities">
-          <EntitySetMapping Name="Docentes">
-            <EntityTypeMapping TypeName="UniBDModel.Docentes">
-              <MappingFragment StoreEntitySet="Docentes">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
-                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
-                <ScalarProperty Name="TipoDocente" ColumnName="TipoDocente" />
-                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
-                <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
-                <ScalarProperty Name="Horario" ColumnName="Horario" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Horarios">
             <EntityTypeMapping TypeName="UniBDModel.Horarios">
               <MappingFragment StoreEntitySet="Horarios">
@@ -297,6 +311,26 @@
               <MappingFragment StoreEntitySet="ProfesionesHorarios">
                 <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
                 <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Docentes">
+            <EntityTypeMapping TypeName="UniBDModel.Docentes">
+              <MappingFragment StoreEntitySet="Docentes">
+                <ScalarProperty Name="IdHorario" ColumnName="IdHorario" />
+                <ScalarProperty Name="IdProfesion" ColumnName="IdProfesion" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+                <ScalarProperty Name="TipoDocente" ColumnName="TipoDocente" />
+                <ScalarProperty Name="Estatus" ColumnName="Estatus" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

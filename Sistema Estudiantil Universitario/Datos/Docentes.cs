@@ -53,8 +53,11 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public string Tanda { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
-        public int Horario { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "* Requerido")]
+        public int IdHorario { get; set; }
     
         public virtual Profesiones Profesiones { get; set; }
+
+        public virtual Horarios Horarios { get; set; }
     }
 }

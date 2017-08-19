@@ -34,15 +34,18 @@ namespace Sistema_Estudiantil_Universitario.Datos
 
         public void Agregar(Docentes docente)
         {
-            Context.Set<Docentes>().Add(docente);
-            docente.FechaCreacion = DateTime.Now;
-            docente.Estatus = (int)Enums.Estatus.TipoEstatus.Activo;
-            Context.SaveChanges();
+            using (var bd = new UniBDEntities())
+            {
+                bd.Set<Docentes>().Add(docente);
+                docente.FechaCreacion = DateTime.Now;
+                docente.Estatus = (int)Enums.Estatus.TipoEstatus.Activo;
+                bd.SaveChanges();
 
-            var iDocente = Context.Docentes.Where(d => d.Id == docente.Id).FirstOrDefault();
-            iDocente.Matricula = Helpers.Utilitario.ObtenerMatricula(docente.FechaCreacion, docente.CodigoProfesion, docente.Tanda, docente.TipoDocente, docente.Id);
-            Context.Entry(docente).State = EntityState.Modified;
-            Context.SaveChanges();
+                var iDocente = bd.Docentes.Where(d => d.Id == docente.Id).FirstOrDefault();
+                iDocente.Matricula = Helpers.Utilitario.ObtenerMatricula(docente.FechaCreacion, docente.CodigoProfesion, docente.Tanda, docente.TipoDocente, docente.Id);
+                bd.Entry(docente).State = EntityState.Modified;
+                bd.SaveChanges();
+            }
         }
 
         public bool Existe(string identificacion)

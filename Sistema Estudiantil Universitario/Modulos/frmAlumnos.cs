@@ -64,7 +64,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             txtHorario.DisplayMember = "Horario";
             txtHorario.ValueMember = "Id";
             txtHorario.SelectedIndex = 0;
-            NuevoDocente.Horario = ((Horarios)txtHorario.Items[0]).Id;
+            NuevoDocente.IdHorario = ((Horarios)txtHorario.Items[0]).Id;
         }
 
         private void llenarDataGrid(IEnumerable<Docentes> lista)
@@ -93,7 +93,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
                 Telefono = txtTelefono.Text.Trim(),
                 TipoDocente = (int)TipoDocente.Estudiante,
                 FechaNacimiento = txtFechaNacimiento.Value,
-                Horario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id,
+                IdHorario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id,
                 Tanda = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Horario,
                 IdProfesion = listadoProfesiones.profesionSeleccionada.Id,
                 CodigoProfesion = listadoProfesiones.profesionSeleccionada.Codigo,
@@ -140,7 +140,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             if (txtHorario.SelectedIndex >= 0)
             {
                 lblErrorTxtHorario.Text = string.Empty;
-                NuevoDocente.Horario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id;
+                NuevoDocente.IdHorario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id;
             }
         }
 
