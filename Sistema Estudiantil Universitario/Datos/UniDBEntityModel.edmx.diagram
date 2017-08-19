@@ -10,6 +10,9 @@
         <EntityTypeShape EntityType="UniBDModel.Profesiones" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="UniBDModel.Usuarios" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="UniBDModel.FK_Docentes_ToProfesiones" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UniBDModel.ProfesionesHorarios" Width="1.5" PointX="8" PointY="1.5" />
+        <AssociationConnector Association="UniBDModel.FK_ProfesionesHorarios_ToHorarios" />
+        <AssociationConnector Association="UniBDModel.FK_ProfesionesHorarios_ToProfesiones" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

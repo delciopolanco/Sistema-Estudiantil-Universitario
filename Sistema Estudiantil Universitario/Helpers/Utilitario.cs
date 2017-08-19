@@ -169,6 +169,11 @@ namespace Sistema_Estudiantil_Universitario.Helpers
                 {
                     ((NumericUpDown)campo).Value = ((NumericUpDown)campo).Minimum;
                 }
+
+                if (campo is ListBox)
+                {
+                    ((ListBox)campo).Items.Clear();
+                }
             }
         }
 

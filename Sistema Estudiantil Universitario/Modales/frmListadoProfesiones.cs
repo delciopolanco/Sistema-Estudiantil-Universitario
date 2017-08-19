@@ -70,6 +70,7 @@ namespace Sistema_Estudiantil_Universitario.Modales
             profesion.Id = int.Parse(dataGridProfesiones.Rows[e.RowIndex].Cells["Id"].Value.ToString());
             profesion.Codigo = dataGridProfesiones.Rows[e.RowIndex].Cells["Codigo"].Value.ToString();
             profesion.Profesion = dataGridProfesiones.Rows[e.RowIndex].Cells["Profesion"].Value.ToString();
+            profesion.Horarios = ProfesionesBD.ObtenerHorarios(profesion.Id);
             this.Close();
         }
     }

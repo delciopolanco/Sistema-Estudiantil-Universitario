@@ -44,6 +44,12 @@
             this.txtCodigoProfesion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.grpBox = new System.Windows.Forms.GroupBox();
+            this.lblErrortxtHorarios = new System.Windows.Forms.Label();
+            this.btnEliminarHorario = new System.Windows.Forms.Button();
+            this.btnAgregarHorario = new System.Windows.Forms.Button();
+            this.txtHorarios = new System.Windows.Forms.ListBox();
+            this.listBoxHorarios = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtDuracion = new System.Windows.Forms.NumericUpDown();
             this.lblErrortxtDuracion = new System.Windows.Forms.Label();
             this.lblErrortxtProfesion = new System.Windows.Forms.Label();
@@ -73,7 +79,7 @@
             this.tab.Location = new System.Drawing.Point(0, 0);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(426, 294);
+            this.tab.Size = new System.Drawing.Size(426, 339);
             this.tab.TabIndex = 2;
             // 
             // listado
@@ -82,7 +88,7 @@
             this.listado.Location = new System.Drawing.Point(4, 22);
             this.listado.Name = "listado";
             this.listado.Padding = new System.Windows.Forms.Padding(3);
-            this.listado.Size = new System.Drawing.Size(418, 268);
+            this.listado.Size = new System.Drawing.Size(418, 313);
             this.listado.TabIndex = 0;
             this.listado.Text = "Listado de Profesiones";
             this.listado.UseVisualStyleBackColor = true;
@@ -103,8 +109,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridProfesiones);
-            this.splitContainer1.Size = new System.Drawing.Size(412, 262);
-            this.splitContainer1.SplitterDistance = 67;
+            this.splitContainer1.Size = new System.Drawing.Size(412, 307);
+            this.splitContainer1.SplitterDistance = 78;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnAgregar
@@ -155,7 +161,7 @@
             this.dataGridProfesiones.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridProfesiones.RowHeadersVisible = false;
             this.dataGridProfesiones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridProfesiones.Size = new System.Drawing.Size(412, 191);
+            this.dataGridProfesiones.Size = new System.Drawing.Size(412, 225);
             this.dataGridProfesiones.StandardTab = true;
             this.dataGridProfesiones.TabIndex = 2;
             // 
@@ -194,7 +200,7 @@
             this.formulario.Location = new System.Drawing.Point(4, 22);
             this.formulario.Name = "formulario";
             this.formulario.Padding = new System.Windows.Forms.Padding(3);
-            this.formulario.Size = new System.Drawing.Size(418, 268);
+            this.formulario.Size = new System.Drawing.Size(418, 313);
             this.formulario.TabIndex = 1;
             this.formulario.Text = "Agregar Profesión";
             this.formulario.UseVisualStyleBackColor = true;
@@ -218,6 +224,12 @@
             // 
             // grpBox
             // 
+            this.grpBox.Controls.Add(this.lblErrortxtHorarios);
+            this.grpBox.Controls.Add(this.btnEliminarHorario);
+            this.grpBox.Controls.Add(this.btnAgregarHorario);
+            this.grpBox.Controls.Add(this.txtHorarios);
+            this.grpBox.Controls.Add(this.listBoxHorarios);
+            this.grpBox.Controls.Add(this.label2);
             this.grpBox.Controls.Add(this.txtDuracion);
             this.grpBox.Controls.Add(this.lblErrortxtDuracion);
             this.grpBox.Controls.Add(this.lblErrortxtProfesion);
@@ -227,10 +239,67 @@
             this.grpBox.Controls.Add(this.label10);
             this.grpBox.Location = new System.Drawing.Point(5, 37);
             this.grpBox.Name = "grpBox";
-            this.grpBox.Size = new System.Drawing.Size(390, 117);
+            this.grpBox.Size = new System.Drawing.Size(390, 229);
             this.grpBox.TabIndex = 3;
             this.grpBox.TabStop = false;
             this.grpBox.Text = "Datos Estudiantiles";
+            // 
+            // lblErrortxtHorarios
+            // 
+            this.lblErrortxtHorarios.AutoSize = true;
+            this.lblErrortxtHorarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrortxtHorarios.ForeColor = System.Drawing.Color.Red;
+            this.lblErrortxtHorarios.Location = new System.Drawing.Point(160, 209);
+            this.lblErrortxtHorarios.Name = "lblErrortxtHorarios";
+            this.lblErrortxtHorarios.Size = new System.Drawing.Size(0, 12);
+            this.lblErrortxtHorarios.TabIndex = 16;
+            // 
+            // btnEliminarHorario
+            // 
+            this.btnEliminarHorario.Location = new System.Drawing.Point(249, 162);
+            this.btnEliminarHorario.Name = "btnEliminarHorario";
+            this.btnEliminarHorario.Size = new System.Drawing.Size(26, 23);
+            this.btnEliminarHorario.TabIndex = 15;
+            this.btnEliminarHorario.Text = "<";
+            this.btnEliminarHorario.UseVisualStyleBackColor = true;
+            this.btnEliminarHorario.Click += new System.EventHandler(this.btnEliminarHorario_Click);
+            // 
+            // btnAgregarHorario
+            // 
+            this.btnAgregarHorario.Location = new System.Drawing.Point(249, 133);
+            this.btnAgregarHorario.Name = "btnAgregarHorario";
+            this.btnAgregarHorario.Size = new System.Drawing.Size(26, 23);
+            this.btnAgregarHorario.TabIndex = 14;
+            this.btnAgregarHorario.Text = ">";
+            this.btnAgregarHorario.UseVisualStyleBackColor = true;
+            this.btnAgregarHorario.Click += new System.EventHandler(this.btnAgregarHorario_Click);
+            // 
+            // txtHorarios
+            // 
+            this.txtHorarios.FormattingEnabled = true;
+            this.txtHorarios.Location = new System.Drawing.Point(281, 111);
+            this.txtHorarios.Name = "txtHorarios";
+            this.txtHorarios.Size = new System.Drawing.Size(88, 95);
+            this.txtHorarios.TabIndex = 13;
+            this.txtHorarios.SelectedIndexChanged += new System.EventHandler(this.txtHorarios_SelectedIndexChanged);
+            this.txtHorarios.Validating += new System.ComponentModel.CancelEventHandler(this.txtHorarios_Validating);
+            // 
+            // listBoxHorarios
+            // 
+            this.listBoxHorarios.FormattingEnabled = true;
+            this.listBoxHorarios.Location = new System.Drawing.Point(155, 111);
+            this.listBoxHorarios.Name = "listBoxHorarios";
+            this.listBoxHorarios.Size = new System.Drawing.Size(88, 95);
+            this.listBoxHorarios.TabIndex = 12;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(29, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Horarios";
             // 
             // txtDuracion
             // 
@@ -322,7 +391,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(297, 168);
+            this.btnGuardar.Location = new System.Drawing.Point(320, 272);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
@@ -332,7 +401,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(216, 168);
+            this.btnCancelar.Location = new System.Drawing.Point(239, 272);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 0;
@@ -344,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 294);
+            this.ClientSize = new System.Drawing.Size(426, 339);
             this.Controls.Add(this.tab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -396,5 +465,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
         private System.Windows.Forms.NumericUpDown txtDuracion;
+        private System.Windows.Forms.Button btnEliminarHorario;
+        private System.Windows.Forms.Button btnAgregarHorario;
+        private System.Windows.Forms.ListBox txtHorarios;
+        private System.Windows.Forms.ListBox listBoxHorarios;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblErrortxtHorarios;
     }
 }

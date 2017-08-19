@@ -40,8 +40,6 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             Cursor = Cursors.WaitCursor;
             llenarDataGrid(DocentesBD.Filtrar());
             Cursor = Cursors.Arrow;
-
-            llenarHorarios();
         }
 
         private void frmAlumnos_Load(object sender, EventArgs e)
@@ -50,14 +48,13 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             Cursor = Cursors.WaitCursor;
             llenarDataGrid(DocentesBD.Filtrar());
             Cursor = Cursors.Arrow;
-
-            llenarHorarios();
         }
 
         private void llenarHorarios()
         {
-            HorariosModel HorariosBD = new HorariosModel();
-            var lista = HorariosBD.Filtrar();
+            var lista = listadoProfesiones.profesionSeleccionada.Horarios;
+
+            txtHorario.Items.Clear();
 
             foreach (Horarios horario in lista)
             {
@@ -149,9 +146,9 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void btnElegirProfesion_Click(object sender, EventArgs e)
         {
-
             listadoProfesiones.ShowDialog();
             txtIdProfesion.Text = listadoProfesiones.profesionSeleccionada.Profesion;
+            llenarHorarios();
         }
 
         private void txtIdProfesion_TextChanged(object sender, EventArgs e)

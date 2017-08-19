@@ -20,6 +20,7 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public Profesiones()
         {
             this.Docentes = new HashSet<Docentes>();
+            this.ProfesionesHorarios = new HashSet<ProfesionesHorarios>();
         }
 
         public int Id { get; set; }
@@ -34,7 +35,13 @@ namespace Sistema_Estudiantil_Universitario.Datos
         [Min(1, ErrorMessage = "* Debe ser mayor a 0")]
         public decimal Duracion { get; set; }
 
+        [AtLeastOneElement(ErrorMessage = "* Debe seleccionar al menos 1 horario.")]
+        public  List<Horarios> Horarios { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Docentes> Docentes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProfesionesHorarios> ProfesionesHorarios { get; set; }
     }
 }

@@ -9,14 +9,24 @@
 
 namespace Sistema_Estudiantil_Universitario.Datos
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     public partial class Horarios
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Horarios()
+        {
+            this.ProfesionesHorarios = new HashSet<ProfesionesHorarios>();
+        }
+
         public int Id { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "* Requerido")]
         [StringLength(50, ErrorMessage = "* No debe ser mayor a 50 caracteres")]
         public string Horario { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProfesionesHorarios> ProfesionesHorarios { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Sistema_Estudiantil_Universitario.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
@@ -32,7 +33,23 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             Utilitario.esconderCabezerasTabs(tab);
             Cursor = Cursors.WaitCursor;
             llenarDataGrid(ProfesionesBD.Filtrar());
+            llenarHorarios();
             Cursor = Cursors.Arrow;
+        }
+
+        private void llenarHorarios()
+        {
+            HorariosModel HorariosBD = new HorariosModel();
+            var lista = HorariosBD.Filtrar();
+
+            foreach (Horarios horario in lista)
+            {
+                listBoxHorarios.Items.Add(horario);
+            }
+
+            listBoxHorarios.DisplayMember = "Horario";
+            listBoxHorarios.ValueMember = "Id";
+            listBoxHorarios.SelectedIndex = 0;
         }
 
         private void llenarDataGrid(IEnumerable<Profesiones> lista)
@@ -65,11 +82,19 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            List<Horarios> listaDeHorarios = new List<Horarios>();
+
+            foreach (Horarios horario in txtHorarios.Items)
+            {
+                listaDeHorarios.Add(horario);
+            }
+
             NuevaProfesion = new Profesiones()
             {
                 Profesion = txtProfesion.Text.Trim(),
                 Duracion = txtDuracion.Value,
-                Codigo = txtCodigoProfesion.Text
+                Codigo = txtCodigoProfesion.Text,
+                Horarios = listaDeHorarios 
             };
 
             if (!Utilitario.EsValido(this.grpBox, NuevaProfesion) || !profesionValidacion)
@@ -157,6 +182,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             txtBuscar.Text = string.Empty;
             tab.SelectedTab = listado;
             Utilitario.LimpiarCampos(this.grpBox);
+            llenarHorarios();
             btnBuscar.PerformClick();
         }
 
@@ -239,6 +265,48 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             else
             {
                 txtCodigoProfesion.Text = string.Empty;
+            }
+        }
+
+        private void btnAgregarHorario_Click(object sender, EventArgs e)
+        {
+            AgregarItemSeleccionado(listBoxHorarios, txtHorarios);
+        }
+
+        private void AgregarItemSeleccionado(ListBox desde, ListBox hasta)
+        {
+            if (desde.Items.Count > 0)
+            {
+                var horario = (Horarios)desde.SelectedItem;
+                hasta.Items.Add(horario);
+                hasta.DisplayMember = "Horario";
+                hasta.ValueMember = "Id";
+                hasta.SelectedIndex = 0;
+
+                desde.Items.Remove(desde.SelectedItem);
+                if (desde.Items.Count > 0)
+                {
+                    desde.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private void btnEliminarHorario_Click(object sender, EventArgs e)
+        {
+            AgregarItemSeleccionado(txtHorarios, listBoxHorarios);
+        }
+
+        private void txtHorarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblErrortxtHorarios.Text = string.Empty;
+        }
+
+        private void txtHorarios_Validating(object sender, CancelEventArgs e)
+        {
+
+            if (!Utilitario.EsValido(this.grpBox, NuevaProfesion, nameof(NuevaProfesion.Horarios)))
+            {
+                return;
             }
         }
     }

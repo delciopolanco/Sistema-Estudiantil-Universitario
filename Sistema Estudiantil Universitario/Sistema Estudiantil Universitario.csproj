@@ -85,6 +85,9 @@
     <Compile Include="Datos\Profesiones.cs">
       <DependentUpon>UniDBEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Datos\ProfesionesHorarios.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Datos\UniDBEntityModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

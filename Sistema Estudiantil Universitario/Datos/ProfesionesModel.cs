@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 
@@ -29,17 +30,35 @@ namespace Sistema_Estudiantil_Universitario.Datos
 
         public void Agregar(Profesiones profesion)
         {
-            using (var cx = new UniBDEntities())
+
+            Context.Set<Profesiones>().Add(profesion);
+            Context.SaveChanges();
+
+            profesion.ProfesionesHorarios = profesion.Horarios.Select(ph => new ProfesionesHorarios()
             {
-                Context.Set<Profesiones>().Add(profesion);
-                Context.SaveChanges();
-            }
+                IdHorario = ph.Id,
+                IdProfesion = profesion.Id
+            }).ToList();
+            Context.SaveChanges();
         }
 
         public bool Existe(string profesion)
         {
             var pprofesion = this.Filtrar(profesion);
-            return pprofesion.Count() > 0 ? true: false;
+            return pprofesion.Count() > 0 ? true : false;
+        }
+
+        internal List<Horarios> ObtenerHorarios(int id)
+        {
+            var listaDeHorarios = (from profHo in Context.ProfesionesHorarios
+                                   join Hor in Context.Horarios
+                                   on profHo.IdHorario equals Hor.Id
+                                   where profHo.IdProfesion == id
+                                   select Hor
+
+            ).ToList();
+
+            return listaDeHorarios;
         }
     }
 }

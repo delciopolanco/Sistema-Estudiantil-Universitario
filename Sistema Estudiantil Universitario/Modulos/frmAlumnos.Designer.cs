@@ -37,6 +37,12 @@
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridUsuarios = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Identificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formulario = new System.Windows.Forms.TabPage();
             this.grpBox = new System.Windows.Forms.GroupBox();
             this.txtHorario = new System.Windows.Forms.ComboBox();
@@ -44,7 +50,6 @@
             this.lblErrorTxtHorario = new System.Windows.Forms.Label();
             this.lblErrortxtIdProfesion = new System.Windows.Forms.Label();
             this.lblErrortxtDireccion = new System.Windows.Forms.Label();
-            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.lblErrortxtTelefono = new System.Windows.Forms.Label();
             this.lblErrortxtFechaNacimiento = new System.Windows.Forms.Label();
@@ -52,7 +57,6 @@
             this.lblErrortxtIdentificacion = new System.Windows.Forms.Label();
             this.lblErrortxtApellidos = new System.Windows.Forms.Label();
             this.lblErrortxtNombres = new System.Windows.Forms.Label();
-            this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.btnElegirProfesion = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lblIdentificacion = new System.Windows.Forms.Label();
@@ -71,12 +75,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Identificacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtIdentificacion = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -184,6 +184,43 @@
             this.dataGridUsuarios.StandardTab = true;
             this.dataGridUsuarios.TabIndex = 1;
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellidos
+            // 
+            this.Apellidos.HeaderText = "Apellidos";
+            this.Apellidos.Name = "Apellidos";
+            this.Apellidos.ReadOnly = true;
+            // 
+            // Identificacion
+            // 
+            this.Identificacion.HeaderText = "Identificación";
+            this.Identificacion.Name = "Identificacion";
+            this.Identificacion.ReadOnly = true;
+            // 
+            // Matricula
+            // 
+            this.Matricula.HeaderText = "Matricula";
+            this.Matricula.Name = "Matricula";
+            this.Matricula.ReadOnly = true;
+            // 
+            // Profesion
+            // 
+            this.Profesion.HeaderText = "Profesión";
+            this.Profesion.Name = "Profesion";
+            this.Profesion.ReadOnly = true;
+            // 
             // formulario
             // 
             this.formulario.Controls.Add(this.grpBox);
@@ -199,12 +236,12 @@
             // 
             // grpBox
             // 
+            this.grpBox.Controls.Add(this.txtTelefono);
             this.grpBox.Controls.Add(this.txtHorario);
             this.grpBox.Controls.Add(this.label6);
             this.grpBox.Controls.Add(this.lblErrorTxtHorario);
             this.grpBox.Controls.Add(this.lblErrortxtIdProfesion);
             this.grpBox.Controls.Add(this.lblErrortxtDireccion);
-            this.grpBox.Controls.Add(this.txtTelefono);
             this.grpBox.Controls.Add(this.label13);
             this.grpBox.Controls.Add(this.lblErrortxtTelefono);
             this.grpBox.Controls.Add(this.lblErrortxtFechaNacimiento);
@@ -242,7 +279,7 @@
             this.txtHorario.Location = new System.Drawing.Point(549, 183);
             this.txtHorario.Name = "txtHorario";
             this.txtHorario.Size = new System.Drawing.Size(213, 21);
-            this.txtHorario.TabIndex = 32;
+            this.txtHorario.TabIndex = 11;
             this.txtHorario.SelectedValueChanged += new System.EventHandler(this.txtHorario_SelectedValueChanged);
             // 
             // label6
@@ -283,15 +320,6 @@
             this.lblErrortxtDireccion.Name = "lblErrortxtDireccion";
             this.lblErrortxtDireccion.Size = new System.Drawing.Size(0, 12);
             this.lblErrortxtDireccion.TabIndex = 28;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(549, 31);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(213, 20);
-            this.txtTelefono.TabIndex = 27;
-            this.txtTelefono.TextChanged += new System.EventHandler(this.txtTelefono_TextChanged);
-            this.txtTelefono.Validating += new System.ComponentModel.CancelEventHandler(this.txtTelefono_Validating);
             // 
             // label13
             // 
@@ -362,15 +390,6 @@
             this.lblErrortxtNombres.Size = new System.Drawing.Size(0, 12);
             this.lblErrortxtNombres.TabIndex = 20;
             // 
-            // txtIdentificacion
-            // 
-            this.txtIdentificacion.Location = new System.Drawing.Point(155, 109);
-            this.txtIdentificacion.Name = "txtIdentificacion";
-            this.txtIdentificacion.Size = new System.Drawing.Size(213, 20);
-            this.txtIdentificacion.TabIndex = 15;
-            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
-            this.txtIdentificacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtIdentificacion_Validating);
-            // 
             // btnElegirProfesion
             // 
             this.btnElegirProfesion.ImageIndex = 0;
@@ -424,7 +443,7 @@
             this.txtDireccion.Location = new System.Drawing.Point(549, 70);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(213, 58);
-            this.txtDireccion.TabIndex = 11;
+            this.txtDireccion.TabIndex = 9;
             this.txtDireccion.Text = "";
             this.txtDireccion.TextChanged += new System.EventHandler(this.txtDireccion_TextChanged);
             this.txtDireccion.Validating += new System.ComponentModel.CancelEventHandler(this.txtDireccion_Validating);
@@ -436,7 +455,7 @@
             this.txtFechaNacimiento.Location = new System.Drawing.Point(155, 185);
             this.txtFechaNacimiento.Name = "txtFechaNacimiento";
             this.txtFechaNacimiento.Size = new System.Drawing.Size(165, 20);
-            this.txtFechaNacimiento.TabIndex = 10;
+            this.txtFechaNacimiento.TabIndex = 7;
             // 
             // label5
             // 
@@ -449,6 +468,7 @@
             // 
             // txtApellidos
             // 
+            this.txtApellidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtApellidos.Location = new System.Drawing.Point(155, 70);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(213, 20);
@@ -458,6 +478,7 @@
             // 
             // txtNombres
             // 
+            this.txtNombres.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNombres.Location = new System.Drawing.Point(155, 31);
             this.txtNombres.Name = "txtNombres";
             this.txtNombres.Size = new System.Drawing.Size(213, 20);
@@ -481,7 +502,7 @@
             this.txtIdProfesion.Location = new System.Drawing.Point(549, 145);
             this.txtIdProfesion.Name = "txtIdProfesion";
             this.txtIdProfesion.Size = new System.Drawing.Size(213, 20);
-            this.txtIdProfesion.TabIndex = 4;
+            this.txtIdProfesion.TabIndex = 10;
             this.txtIdProfesion.TextChanged += new System.EventHandler(this.txtIdProfesion_TextChanged);
             // 
             // label3
@@ -540,42 +561,22 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // Id
+            // txtIdentificacion
             // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
+            this.txtIdentificacion.Location = new System.Drawing.Point(155, 109);
+            this.txtIdentificacion.Name = "txtIdentificacion";
+            this.txtIdentificacion.Size = new System.Drawing.Size(213, 20);
+            this.txtIdentificacion.TabIndex = 6;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
+            this.txtIdentificacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtIdentificacion_Validating);
             // 
-            // Nombre
+            // txtTelefono
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Apellidos
-            // 
-            this.Apellidos.HeaderText = "Apellidos";
-            this.Apellidos.Name = "Apellidos";
-            this.Apellidos.ReadOnly = true;
-            // 
-            // Identificacion
-            // 
-            this.Identificacion.HeaderText = "Identificación";
-            this.Identificacion.Name = "Identificacion";
-            this.Identificacion.ReadOnly = true;
-            // 
-            // Matricula
-            // 
-            this.Matricula.HeaderText = "Matricula";
-            this.Matricula.Name = "Matricula";
-            this.Matricula.ReadOnly = true;
-            // 
-            // Profesion
-            // 
-            this.Profesion.HeaderText = "Profesión";
-            this.Profesion.Name = "Profesion";
-            this.Profesion.ReadOnly = true;
+            this.txtTelefono.Location = new System.Drawing.Point(550, 31);
+            this.txtTelefono.Mask = "(999)000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(212, 20);
+            this.txtTelefono.TabIndex = 8;
             // 
             // frmAlumnos
             // 
@@ -631,9 +632,7 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.Button btnElegirProfesion;
         private System.Windows.Forms.DataGridView dataGridUsuarios;
-        private System.Windows.Forms.TextBox txtIdentificacion;
         private System.Windows.Forms.Label lblIdentificacion;
-        private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label lblErrortxtTelefono;
         private System.Windows.Forms.Label lblErrortxtFechaNacimiento;
@@ -653,5 +652,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Identificacion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Matricula;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
+        private System.Windows.Forms.MaskedTextBox txtTelefono;
+        private System.Windows.Forms.TextBox txtIdentificacion;
     }
 }

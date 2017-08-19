@@ -29,5 +29,6 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public virtual DbSet<Horarios> Horarios { get; set; }
         public virtual DbSet<Profesiones> Profesiones { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<ProfesionesHorarios> ProfesionesHorarios { get; set; }
     }
 }
