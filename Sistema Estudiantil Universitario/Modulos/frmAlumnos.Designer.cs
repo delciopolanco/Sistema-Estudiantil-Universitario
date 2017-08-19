@@ -96,7 +96,7 @@
             this.tab.Location = new System.Drawing.Point(0, 0);
             this.tab.Name = "tab";
             this.tab.SelectedIndex = 0;
-            this.tab.Size = new System.Drawing.Size(846, 351);
+            this.tab.Size = new System.Drawing.Size(846, 401);
             this.tab.TabIndex = 0;
             // 
             // listado
@@ -105,7 +105,7 @@
             this.listado.Location = new System.Drawing.Point(4, 22);
             this.listado.Name = "listado";
             this.listado.Padding = new System.Windows.Forms.Padding(3);
-            this.listado.Size = new System.Drawing.Size(838, 325);
+            this.listado.Size = new System.Drawing.Size(838, 375);
             this.listado.TabIndex = 0;
             this.listado.Text = "Listado de Alumnos";
             this.listado.UseVisualStyleBackColor = true;
@@ -126,8 +126,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridUsuarios);
-            this.splitContainer1.Size = new System.Drawing.Size(832, 319);
-            this.splitContainer1.SplitterDistance = 64;
+            this.splitContainer1.Size = new System.Drawing.Size(832, 369);
+            this.splitContainer1.SplitterDistance = 74;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnAgregar
@@ -180,7 +180,7 @@
             this.dataGridUsuarios.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dataGridUsuarios.RowHeadersVisible = false;
             this.dataGridUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridUsuarios.Size = new System.Drawing.Size(832, 251);
+            this.dataGridUsuarios.Size = new System.Drawing.Size(832, 291);
             this.dataGridUsuarios.StandardTab = true;
             this.dataGridUsuarios.TabIndex = 1;
             // 
@@ -229,7 +229,7 @@
             this.formulario.Location = new System.Drawing.Point(4, 22);
             this.formulario.Name = "formulario";
             this.formulario.Padding = new System.Windows.Forms.Padding(3);
-            this.formulario.Size = new System.Drawing.Size(838, 325);
+            this.formulario.Size = new System.Drawing.Size(838, 375);
             this.formulario.TabIndex = 1;
             this.formulario.Text = "Agregar Alumno";
             this.formulario.UseVisualStyleBackColor = true;
@@ -293,11 +293,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(371, 186);
+            this.label6.Location = new System.Drawing.Point(400, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 13);
+            this.label6.Size = new System.Drawing.Size(85, 13);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Horario de la Profesión";
+            this.label6.Text = "Horario preferido";
             // 
             // lblErrortxtIdHorario
             // 
@@ -560,7 +560,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(753, 286);
+            this.btnGuardar.Location = new System.Drawing.Point(755, 286);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(75, 23);
             this.btnGuardar.TabIndex = 1;
@@ -570,7 +570,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(672, 286);
+            this.btnCancelar.Location = new System.Drawing.Point(674, 286);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 0;
@@ -582,7 +582,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(846, 351);
+            this.ClientSize = new System.Drawing.Size(846, 401);
             this.Controls.Add(this.tab);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
