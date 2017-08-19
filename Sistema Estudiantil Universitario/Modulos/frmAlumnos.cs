@@ -54,17 +54,17 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         {
             var lista = listadoProfesiones.profesionSeleccionada.Horarios;
 
-            txtHorario.Items.Clear();
+            txtIdHorario.Items.Clear();
 
             foreach (Horarios horario in lista)
             {
-                txtHorario.Items.Add(horario);
+                txtIdHorario.Items.Add(horario);
             }
 
-            txtHorario.DisplayMember = "Horario";
-            txtHorario.ValueMember = "Id";
-            txtHorario.SelectedIndex = 0;
-            NuevoDocente.IdHorario = ((Horarios)txtHorario.Items[0]).Id;
+            txtIdHorario.DisplayMember = "Horario";
+            txtIdHorario.ValueMember = "Id";
+            txtIdHorario.SelectedIndex = 0;
+            NuevoDocente.IdHorario = ((Horarios)txtIdHorario.Items[0]).Id;
         }
 
         private void llenarDataGrid(IEnumerable<Docentes> lista)
@@ -93,13 +93,17 @@ namespace Sistema_Estudiantil_Universitario.Modulos
                 Telefono = txtTelefono.Text.Trim(),
                 TipoDocente = (int)TipoDocente.Estudiante,
                 FechaNacimiento = txtFechaNacimiento.Value,
-                IdHorario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id,
-                Tanda = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Horario,
-                IdProfesion = listadoProfesiones.profesionSeleccionada.Id,
                 CodigoProfesion = listadoProfesiones.profesionSeleccionada.Codigo,
                 Sexo = rdlFemenino.Checked ? (int)Sexo.Femenino : (int)Sexo.Masculino
 
             };
+
+            if (txtIdHorario.Items.Count > 0)
+            {
+                NuevoDocente.IdHorario = ((Horarios)txtIdHorario.Items[txtIdHorario.SelectedIndex]).Id;
+                NuevoDocente.Tanda = ((Horarios)txtIdHorario.Items[txtIdHorario.SelectedIndex]).Horario;
+                NuevoDocente.IdProfesion = listadoProfesiones.profesionSeleccionada.Id;
+            }
 
             if (!Utilitario.EsValido(this.grpBox, NuevoDocente) || !validacionIdentificacion)
             {
@@ -137,10 +141,10 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
         private void txtHorario_SelectedValueChanged(object sender, EventArgs e)
         {
-            if (txtHorario.SelectedIndex >= 0)
+            if (txtIdHorario.SelectedIndex >= 0)
             {
-                lblErrorTxtHorario.Text = string.Empty;
-                NuevoDocente.IdHorario = ((Horarios)txtHorario.Items[txtHorario.SelectedIndex]).Id;
+                lblErrortxtIdHorario.Text = string.Empty;
+                NuevoDocente.IdHorario = ((Horarios)txtIdHorario.Items[txtIdHorario.SelectedIndex]).Id;
             }
         }
 

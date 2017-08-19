@@ -45,9 +45,10 @@
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.formulario = new System.Windows.Forms.TabPage();
             this.grpBox = new System.Windows.Forms.GroupBox();
-            this.txtHorario = new System.Windows.Forms.ComboBox();
+            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
+            this.txtIdHorario = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.lblErrorTxtHorario = new System.Windows.Forms.Label();
+            this.lblErrortxtIdHorario = new System.Windows.Forms.Label();
             this.lblErrortxtIdProfesion = new System.Windows.Forms.Label();
             this.lblErrortxtDireccion = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -57,6 +58,7 @@
             this.lblErrortxtIdentificacion = new System.Windows.Forms.Label();
             this.lblErrortxtApellidos = new System.Windows.Forms.Label();
             this.lblErrortxtNombres = new System.Windows.Forms.Label();
+            this.txtIdentificacion = new System.Windows.Forms.TextBox();
             this.btnElegirProfesion = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.lblIdentificacion = new System.Windows.Forms.Label();
@@ -75,8 +77,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.txtIdentificacion = new System.Windows.Forms.TextBox();
-            this.txtTelefono = new System.Windows.Forms.MaskedTextBox();
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -237,9 +237,9 @@
             // grpBox
             // 
             this.grpBox.Controls.Add(this.txtTelefono);
-            this.grpBox.Controls.Add(this.txtHorario);
+            this.grpBox.Controls.Add(this.txtIdHorario);
             this.grpBox.Controls.Add(this.label6);
-            this.grpBox.Controls.Add(this.lblErrorTxtHorario);
+            this.grpBox.Controls.Add(this.lblErrortxtIdHorario);
             this.grpBox.Controls.Add(this.lblErrortxtIdProfesion);
             this.grpBox.Controls.Add(this.lblErrortxtDireccion);
             this.grpBox.Controls.Add(this.label13);
@@ -272,15 +272,23 @@
             this.grpBox.TabStop = false;
             this.grpBox.Text = "Datos del ALumno";
             // 
-            // txtHorario
+            // txtTelefono
             // 
-            this.txtHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.txtHorario.FormattingEnabled = true;
-            this.txtHorario.Location = new System.Drawing.Point(549, 183);
-            this.txtHorario.Name = "txtHorario";
-            this.txtHorario.Size = new System.Drawing.Size(213, 21);
-            this.txtHorario.TabIndex = 11;
-            this.txtHorario.SelectedValueChanged += new System.EventHandler(this.txtHorario_SelectedValueChanged);
+            this.txtTelefono.Location = new System.Drawing.Point(550, 31);
+            this.txtTelefono.Mask = "(999)000-0000";
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(212, 20);
+            this.txtTelefono.TabIndex = 8;
+            // 
+            // txtIdHorario
+            // 
+            this.txtIdHorario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.txtIdHorario.FormattingEnabled = true;
+            this.txtIdHorario.Location = new System.Drawing.Point(549, 183);
+            this.txtIdHorario.Name = "txtIdHorario";
+            this.txtIdHorario.Size = new System.Drawing.Size(213, 21);
+            this.txtIdHorario.TabIndex = 11;
+            this.txtIdHorario.SelectedValueChanged += new System.EventHandler(this.txtHorario_SelectedValueChanged);
             // 
             // label6
             // 
@@ -291,15 +299,15 @@
             this.label6.TabIndex = 31;
             this.label6.Text = "Horario";
             // 
-            // lblErrorTxtHorario
+            // lblErrortxtIdHorario
             // 
-            this.lblErrorTxtHorario.AutoSize = true;
-            this.lblErrorTxtHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblErrorTxtHorario.ForeColor = System.Drawing.Color.Red;
-            this.lblErrorTxtHorario.Location = new System.Drawing.Point(548, 207);
-            this.lblErrorTxtHorario.Name = "lblErrorTxtHorario";
-            this.lblErrorTxtHorario.Size = new System.Drawing.Size(0, 12);
-            this.lblErrorTxtHorario.TabIndex = 30;
+            this.lblErrortxtIdHorario.AutoSize = true;
+            this.lblErrortxtIdHorario.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblErrortxtIdHorario.ForeColor = System.Drawing.Color.Red;
+            this.lblErrortxtIdHorario.Location = new System.Drawing.Point(548, 207);
+            this.lblErrortxtIdHorario.Name = "lblErrortxtIdHorario";
+            this.lblErrortxtIdHorario.Size = new System.Drawing.Size(0, 12);
+            this.lblErrortxtIdHorario.TabIndex = 30;
             // 
             // lblErrortxtIdProfesion
             // 
@@ -389,6 +397,15 @@
             this.lblErrortxtNombres.Name = "lblErrortxtNombres";
             this.lblErrortxtNombres.Size = new System.Drawing.Size(0, 12);
             this.lblErrortxtNombres.TabIndex = 20;
+            // 
+            // txtIdentificacion
+            // 
+            this.txtIdentificacion.Location = new System.Drawing.Point(155, 109);
+            this.txtIdentificacion.Name = "txtIdentificacion";
+            this.txtIdentificacion.Size = new System.Drawing.Size(213, 20);
+            this.txtIdentificacion.TabIndex = 6;
+            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
+            this.txtIdentificacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtIdentificacion_Validating);
             // 
             // btnElegirProfesion
             // 
@@ -561,23 +578,6 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // txtIdentificacion
-            // 
-            this.txtIdentificacion.Location = new System.Drawing.Point(155, 109);
-            this.txtIdentificacion.Name = "txtIdentificacion";
-            this.txtIdentificacion.Size = new System.Drawing.Size(213, 20);
-            this.txtIdentificacion.TabIndex = 6;
-            this.txtIdentificacion.TextChanged += new System.EventHandler(this.txtIdentificacion_TextChanged);
-            this.txtIdentificacion.Validating += new System.ComponentModel.CancelEventHandler(this.txtIdentificacion_Validating);
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Location = new System.Drawing.Point(550, 31);
-            this.txtTelefono.Mask = "(999)000-0000";
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(212, 20);
-            this.txtTelefono.TabIndex = 8;
-            // 
             // frmAlumnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -642,9 +642,9 @@
         private System.Windows.Forms.Label lblErrortxtNombres;
         private System.Windows.Forms.Label lblErrortxtIdProfesion;
         private System.Windows.Forms.Label lblErrortxtDireccion;
-        private System.Windows.Forms.ComboBox txtHorario;
+        private System.Windows.Forms.ComboBox txtIdHorario;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblErrorTxtHorario;
+        private System.Windows.Forms.Label lblErrortxtIdHorario;
         public System.Windows.Forms.TextBox txtIdProfesion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;

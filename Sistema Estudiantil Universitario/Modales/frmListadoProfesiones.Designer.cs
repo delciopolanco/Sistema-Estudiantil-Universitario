@@ -38,6 +38,7 @@
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -77,6 +78,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.txtBuscar);
             this.splitContainer1.Panel1.Controls.Add(this.btnBuscar);
             // 
@@ -148,7 +150,16 @@
             this.Profesion.Name = "Profesion";
             this.Profesion.ReadOnly = true;
             // 
-            // listadoProfesiones
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(47, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(366, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Al hacer doble click en la profesión deseaada podrá seleccionar la profesión";
+            // 
+            // frmListadoProfesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,7 +169,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "listadoProfesiones";
+            this.Name = "frmListadoProfesiones";
             this.Text = "Listado de Profesiones";
             this.Load += new System.EventHandler(this.listadoProfesiones_Load);
             this.tab.ResumeLayout(false);
@@ -184,5 +195,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
+        private System.Windows.Forms.Label label1;
     }
 }
