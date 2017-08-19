@@ -30,5 +30,6 @@ namespace Sistema_Estudiantil_Universitario.Datos
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<ProfesionesHorarios> ProfesionesHorarios { get; set; }
         public virtual DbSet<Docentes> Docentes { get; set; }
+        public virtual DbSet<Asignaturas> Asignaturas { get; set; }
     }
 }

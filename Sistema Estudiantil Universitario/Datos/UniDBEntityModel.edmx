@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="UniBDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Asignaturas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Asignatura" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="Docentes">
           <Key>
             <PropertyRef Name="Id" />
@@ -109,6 +116,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="UniBDModelStoreContainer">
+          <EntitySet Name="Asignaturas" EntityType="Self.Asignaturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Docentes" EntityType="Self.Docentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Horarios" EntityType="Self.Horarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Profesiones" EntityType="Self.Profesiones" Schema="dbo" store:Type="Tables" />
@@ -189,6 +197,7 @@
             <End Role="Profesiones" EntitySet="Profesiones" />
             <End Role="Docentes" EntitySet="Docentes" />
           </AssociationSet>
+          <EntitySet Name="Asignaturas" EntityType="UniBDModel.Asignaturas" />
           </EntityContainer>
         <EntityType Name="ProfesionesHorarios">
           <Key>
@@ -269,6 +278,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Asignaturas">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Asignatura" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -331,6 +347,14 @@
                 <ScalarProperty Name="Identificacion" ColumnName="Identificacion" />
                 <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Asignaturas">
+            <EntityTypeMapping TypeName="UniBDModel.Asignaturas">
+              <MappingFragment StoreEntitySet="Asignaturas">
+                <ScalarProperty Name="Asignatura" ColumnName="Asignatura" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

@@ -73,6 +73,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\Asignaturas.cs">
+      <DependentUpon>UniDBEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Datos\AsignaturasModel.cs" />
     <Compile Include="Datos\Docentes.cs">
       <DependentUpon>UniDBEntityModel.tt</DependentUpon>
     </Compile>

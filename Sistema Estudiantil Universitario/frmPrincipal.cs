@@ -72,11 +72,6 @@ namespace Sistema_Estudiantil_Universitario
             LayoutMdi(MdiLayout.TileHorizontal);
         }
 
-        private void ArrangeIconsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LayoutMdi(MdiLayout.ArrangeIcons);
-        }
-
         private void CloseAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
             cerrarTodasLasVentanas();

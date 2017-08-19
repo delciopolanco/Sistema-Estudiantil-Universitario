@@ -242,7 +242,7 @@
             this.grpBox.Size = new System.Drawing.Size(390, 229);
             this.grpBox.TabIndex = 3;
             this.grpBox.TabStop = false;
-            this.grpBox.Text = "Datos Estudiantiles";
+            this.grpBox.Text = "Datos profesión";
             // 
             // lblErrortxtHorarios
             // 

@@ -14,6 +14,7 @@
         <EntityTypeShape EntityType="UniBDModel.Docentes" Width="1.5" PointX="11" PointY="0.75" />
         <AssociationConnector Association="UniBDModel.FK_Docentes_ToHorarios" />
         <AssociationConnector Association="UniBDModel.FK_Docentes_ToProfesiones" />
+        <EntityTypeShape EntityType="UniBDModel.Asignaturas" Width="1.5" PointX="3.375" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -84,7 +84,10 @@ namespace Sistema_Estudiantil_Universitario.Datos
 
         public bool Existe(string usuario)
         {
-            return this.Filtrar(usuario).Count() > 0 ? true : false;
+            var lista =  Context.Set<Usuarios>().Where(u =>
+                u.Usuario.Contains(usuario)).ToList();
+
+            return lista.Count() > 0 ? true : false;
         }
 
         public bool Login(string usuario, string clave)
