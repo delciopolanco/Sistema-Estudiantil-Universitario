@@ -270,7 +270,7 @@
             this.grpBox.Size = new System.Drawing.Size(822, 244);
             this.grpBox.TabIndex = 2;
             this.grpBox.TabStop = false;
-            this.grpBox.Text = "Datos del ALumno";
+            this.grpBox.Text = "Datos del Alumno";
             // 
             // txtTelefono
             // 
@@ -293,11 +293,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(437, 185);
+            this.label6.Location = new System.Drawing.Point(371, 186);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(41, 13);
+            this.label6.Size = new System.Drawing.Size(114, 13);
             this.label6.TabIndex = 31;
-            this.label6.Text = "Horario";
+            this.label6.Text = "Horario de la Profesión";
             // 
             // lblErrortxtIdHorario
             // 

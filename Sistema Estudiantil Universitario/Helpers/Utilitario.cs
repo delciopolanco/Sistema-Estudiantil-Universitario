@@ -174,6 +174,12 @@ namespace Sistema_Estudiantil_Universitario.Helpers
                 {
                     ((ListBox)campo).Items.Clear();
                 }
+
+
+                if (campo is ComboBox)
+                {
+                    ((ComboBox)campo).Items.Clear();
+                }
             }
         }
 

@@ -38,7 +38,8 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             formulario.Hide();
             listado.Show();
             Cursor = Cursors.WaitCursor;
-            llenarDataGrid(DocentesBD.Filtrar());
+            llenarDataGrid(DocentesBD.Filtrar(TipoDocente.Estudiante));
+            Utilitario.LimpiarCampos(this.grpBox);
             Cursor = Cursors.Arrow;
         }
 
@@ -46,7 +47,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
         {
             Utilitario.esconderCabezerasTabs(tab);
             Cursor = Cursors.WaitCursor;
-            llenarDataGrid(DocentesBD.Filtrar());
+            llenarDataGrid(DocentesBD.Filtrar(TipoDocente.Estudiante));
             Cursor = Cursors.Arrow;
         }
 
@@ -56,15 +57,18 @@ namespace Sistema_Estudiantil_Universitario.Modulos
 
             txtIdHorario.Items.Clear();
 
-            foreach (Horarios horario in lista)
+            if (lista != null && lista.Count > 0)
             {
-                txtIdHorario.Items.Add(horario);
-            }
+                foreach (Horarios horario in lista)
+                {
+                    txtIdHorario.Items.Add(horario);
+                }
 
-            txtIdHorario.DisplayMember = "Horario";
-            txtIdHorario.ValueMember = "Id";
-            txtIdHorario.SelectedIndex = 0;
-            NuevoDocente.IdHorario = ((Horarios)txtIdHorario.Items[0]).Id;
+                txtIdHorario.DisplayMember = "Horario";
+                txtIdHorario.ValueMember = "Id";
+                txtIdHorario.SelectedIndex = 0;
+                NuevoDocente.IdHorario = ((Horarios)txtIdHorario.Items[0]).Id;
+            }
         }
 
         private void llenarDataGrid(IEnumerable<Docentes> lista)
@@ -203,7 +207,7 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             }
 
             Cursor = Cursors.WaitCursor;
-            if (DocentesBD.Existe(txtIdentificacion.Text.Trim()))
+            if (DocentesBD.Existe(txtIdentificacion.Text.Trim(), TipoDocente.Estudiante))
             {
                 lblErrortxtIdentificacion.Text = "* Esta identificación ya se encuentra registada.";
                 Cursor = Cursors.Arrow;
@@ -249,11 +253,11 @@ namespace Sistema_Estudiantil_Universitario.Modulos
             Cursor = Cursors.WaitCursor;
             if (!string.IsNullOrEmpty(txtBuscar.Text))
             {
-                llenarDataGrid(DocentesBD.Filtrar(txtBuscar.Text.Trim()));
+                llenarDataGrid(DocentesBD.Filtrar(txtBuscar.Text.Trim(), TipoDocente.Estudiante));
             }
             else
             {
-                llenarDataGrid(DocentesBD.Filtrar());
+                llenarDataGrid(DocentesBD.Filtrar(TipoDocente.Estudiante));
             }
             Cursor = Cursors.Arrow;
         }

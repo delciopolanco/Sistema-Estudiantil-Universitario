@@ -38,6 +38,12 @@ namespace Sistema_Estudiantil_Universitario.Modales
 
         private void llenarDataGrid(IEnumerable<Datos.Profesiones> lista)
         {
+            if(lista.Count() <= 0)
+            {
+                lblInfo.Text = "Actualmente no posee profesiones registrada.";
+                return;
+            }
+
             dataGridProfesiones.Rows.Clear();
 
             foreach (Datos.Profesiones profesion in lista)

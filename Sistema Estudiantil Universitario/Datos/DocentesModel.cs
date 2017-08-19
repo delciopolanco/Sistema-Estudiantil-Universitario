@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Sistema_Estudiantil_Universitario.Enums.TipoDocentes;
 
 namespace Sistema_Estudiantil_Universitario.Datos
 {
@@ -16,13 +17,14 @@ namespace Sistema_Estudiantil_Universitario.Datos
             Context = new UniBDEntities();
         }
 
-        public IEnumerable<Docentes> Filtrar()
+        public IEnumerable<Docentes> Filtrar(TipoDocente tipoDocente)
         {
-            return Context.Set<Docentes>().ToList();
+            return Context.Set<Docentes>().Where(p =>
+                 p.TipoDocente == (int)tipoDocente).ToList();
         }
 
 
-        public IEnumerable<Docentes> Filtrar(string condicion)
+        public IEnumerable<Docentes> Filtrar(string condicion, TipoDocente tipoDocente)
         {
             return Context.Set<Docentes>().Where(p =>
                  p.Nombres.Contains(condicion) ||
@@ -48,9 +50,9 @@ namespace Sistema_Estudiantil_Universitario.Datos
             }
         }
 
-        public bool Existe(string identificacion)
+        public bool Existe(string identificacion, TipoDocente tipoDocente)
         {
-            var docente = this.Filtrar(identificacion);
+            var docente = this.Filtrar(identificacion, tipoDocente);
             return docente.Count() > 0 ? true : false;
         }
     }

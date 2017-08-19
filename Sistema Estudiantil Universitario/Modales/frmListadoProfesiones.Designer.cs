@@ -32,13 +32,13 @@
             this.tab = new System.Windows.Forms.TabControl();
             this.listado = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblInfo = new System.Windows.Forms.Label();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.dataGridProfesiones = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -78,7 +78,7 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.label1);
+            this.splitContainer1.Panel1.Controls.Add(this.lblInfo);
             this.splitContainer1.Panel1.Controls.Add(this.txtBuscar);
             this.splitContainer1.Panel1.Controls.Add(this.btnBuscar);
             // 
@@ -88,6 +88,15 @@
             this.splitContainer1.Size = new System.Drawing.Size(461, 219);
             this.splitContainer1.SplitterDistance = 60;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // lblInfo
+            // 
+            this.lblInfo.AutoSize = true;
+            this.lblInfo.Location = new System.Drawing.Point(63, 7);
+            this.lblInfo.Name = "lblInfo";
+            this.lblInfo.Size = new System.Drawing.Size(317, 13);
+            this.lblInfo.TabIndex = 2;
+            this.lblInfo.Text = "Al hacer doble click en la profesión deseaada podrá seleccionarla";
             // 
             // txtBuscar
             // 
@@ -150,15 +159,6 @@
             this.Profesion.Name = "Profesion";
             this.Profesion.ReadOnly = true;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Al hacer doble click en la profesión deseaada podrá seleccionar la profesión";
-            // 
             // frmListadoProfesiones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -195,6 +195,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Profesion;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblInfo;
     }
 }
