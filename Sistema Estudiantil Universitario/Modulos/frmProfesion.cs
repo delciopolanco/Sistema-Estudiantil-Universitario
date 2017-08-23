@@ -119,6 +119,10 @@ namespace Sistema_Estudiantil_Universitario.Modulos
                     {
                         btnCancelar.PerformClick();
                     }
+                    else
+                    {
+                        llenarHorarios();
+                    }
                 }
 
             }

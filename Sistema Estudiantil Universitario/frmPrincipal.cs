@@ -23,6 +23,7 @@ namespace Sistema_Estudiantil_Universitario
         public static frmSeccion seccion;
         public static frmCreacionUsuario creacionUsuario;
         public static frmCambioClave cambiarClave;
+        public static frmAyuda ayuda;
         public static string usuarioLogueado = string.Empty;
         public static frmLogin login;
         public static StatusBar mainStatusBar = new StatusBar();
@@ -47,14 +48,17 @@ namespace Sistema_Estudiantil_Universitario
 
         private void CutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NoDisponible();
         }
 
         private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NoDisponible();
         }
 
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            NoDisponible();
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,16 +161,7 @@ namespace Sistema_Estudiantil_Universitario
 
         private void menuItemSeccion_Click(object sender, EventArgs e)
         {
-            if (seccion == null)
-            {
-                seccion = new frmSeccion();
-                seccion.MdiParent = this;
-                seccion.Show();
-            }
-            else
-            {
-                seccion.Activate();
-            }
+            NoDisponible();
         }
 
         private void menuItemHorario_Click(object sender, EventArgs e)
@@ -199,7 +194,7 @@ namespace Sistema_Estudiantil_Universitario
 
         private void estudiantesFemeninasEnHorarioVespertinoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            NoDisponible();
         }
 
         private void agregarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -228,6 +223,60 @@ namespace Sistema_Estudiantil_Universitario
             {
                 cambiarClave.Activate();
             }
+        }
+
+        private void indexToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ayuda == null)
+            {
+                ayuda = new frmAyuda();
+                ayuda.MdiParent = this;
+                ayuda.Show();
+            }
+            else
+            {
+                ayuda.Activate();
+            }
+        }
+
+        private void helpToolStripButton_Click(object sender, EventArgs e)
+        {
+            indexToolStripMenuItem.PerformClick();
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
+        }
+
+        private void NoDisponible()
+        {
+            Utilitario.Mensaje("Esta funcionalidad no se encuentra disponible");
+        }
+
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
+        }
+
+        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
+        }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
+        }
+
+        private void redoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
+        }
+
+        private void listadoDeLosUsuariosConClaveMayorA5CaravcteresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NoDisponible();
         }
     }
 }

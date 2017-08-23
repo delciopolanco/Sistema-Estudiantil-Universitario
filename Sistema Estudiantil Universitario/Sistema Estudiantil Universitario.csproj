@@ -124,6 +124,12 @@
     <Compile Include="Helpers\Constantes.cs" />
     <Compile Include="Helpers\Correo.cs" />
     <Compile Include="Helpers\Utilitario.cs" />
+    <Compile Include="Modales\frmAyuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\frmAyuda.Designer.cs">
+      <DependentUpon>frmAyuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\frmCambioClave.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -196,6 +202,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\frmAyuda.resx">
+      <DependentUpon>frmAyuda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\frmCambioClave.resx">
       <DependentUpon>frmCambioClave.cs</DependentUpon>

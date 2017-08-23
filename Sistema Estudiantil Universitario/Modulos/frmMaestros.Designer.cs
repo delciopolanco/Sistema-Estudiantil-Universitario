@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMaestros));
             this.tab = new System.Windows.Forms.TabControl();
             this.listado = new System.Windows.Forms.TabPage();
@@ -75,6 +76,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tab.SuspendLayout();
             this.listado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -410,6 +412,7 @@
             // btnElegirProfesion
             // 
             this.btnElegirProfesion.ImageIndex = 0;
+            this.btnElegirProfesion.ImageList = this.imageList1;
             this.btnElegirProfesion.Location = new System.Drawing.Point(772, 144);
             this.btnElegirProfesion.Name = "btnElegirProfesion";
             this.btnElegirProfesion.Size = new System.Drawing.Size(31, 21);
@@ -571,6 +574,12 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "if_gnome-searchtool_22031.png");
+            // 
             // frmMaestros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,5 +656,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.ImageList imageList1;
     }
 }

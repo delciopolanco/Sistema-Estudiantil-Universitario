@@ -65,11 +65,11 @@
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.indexToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -208,6 +208,7 @@
             | System.Windows.Forms.Keys.A)));
             this.toolStripMenuItem1.Size = new System.Drawing.Size(372, 22);
             this.toolStripMenuItem1.Text = "Alumnos por profesion";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -218,6 +219,7 @@
             | System.Windows.Forms.Keys.B)));
             this.toolStripMenuItem2.Size = new System.Drawing.Size(372, 22);
             this.toolStripMenuItem2.Text = "Alumnos en horario matutino > 21 años";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // undoToolStripMenuItem
             // 
@@ -228,6 +230,7 @@
             | System.Windows.Forms.Keys.C)));
             this.undoToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
             this.undoToolStripMenuItem.Text = "&Alumnos por sección";
+            this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // estudiantesFemeninasEnHorarioVespertinoToolStripMenuItem
             // 
@@ -253,6 +256,7 @@
             | System.Windows.Forms.Keys.E)));
             this.toolStripMenuItem3.Size = new System.Drawing.Size(372, 22);
             this.toolStripMenuItem3.Text = "Maestros y asignaturas por carrera";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // redoToolStripMenuItem
             // 
@@ -263,6 +267,7 @@
             | System.Windows.Forms.Keys.F)));
             this.redoToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
             this.redoToolStripMenuItem.Text = "&Maestros por horario";
+            this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
@@ -325,6 +330,7 @@
             | System.Windows.Forms.Keys.U)));
             this.listadoDeLosUsuariosConClaveMayorA5CaravcteresToolStripMenuItem.Size = new System.Drawing.Size(372, 22);
             this.listadoDeLosUsuariosConClaveMayorA5CaravcteresToolStripMenuItem.Text = "Usuarios con clave mayor a 5 carácteres";
+            this.listadoDeLosUsuariosConClaveMayorA5CaravcteresToolStripMenuItem.Click += new System.EventHandler(this.listadoDeLosUsuariosConClaveMayorA5CaravcteresToolStripMenuItem_Click);
             // 
             // viewMenu
             // 
@@ -404,6 +410,20 @@
             this.helpMenu.Size = new System.Drawing.Size(53, 20);
             this.helpMenu.Text = "Ay&uda";
             // 
+            // indexToolStripMenuItem
+            // 
+            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
+            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
+            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
+            this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.indexToolStripMenuItem.Text = "&Acerca de..";
+            this.indexToolStripMenuItem.Click += new System.EventHandler(this.indexToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -422,19 +442,7 @@
             this.helpToolStripButton.Name = "helpToolStripButton";
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "Ayuda";
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(149, 6);
-            // 
-            // indexToolStripMenuItem
-            // 
-            this.indexToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("indexToolStripMenuItem.Image")));
-            this.indexToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
-            this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-            this.indexToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.indexToolStripMenuItem.Text = "&Acerca de..";
+            this.helpToolStripButton.Click += new System.EventHandler(this.helpToolStripButton_Click);
             // 
             // frmPrincipal
             // 
